@@ -1,6 +1,6 @@
 {
   "name": "aurelia-froala",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "src": "src"
   },
   "author": "Net at Work GmbH",
-  "license": "MIT",
+  "license": "Apache",
   "devDependencies": {
     "babel": "^6.3.26",
     "babel-plugin-transform-decorators": "^6.8.0",
