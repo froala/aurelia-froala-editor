@@ -95,3 +95,6 @@ The languages of all editors on a page are automatically adjusted when the globa
 
 #Licencing
 While this package is licenced under the Apache licence, the Froala editor itself is not. Check out the [Froala Website](https://www.froala.com/wysiwyg-editor) for details.
+
+[npm-url]: https://npmjs.org/package/aurelia-froala
+[npm-image]: http://img.shields.io/npm/v/aurelia-froala.svg
