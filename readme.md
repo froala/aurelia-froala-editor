@@ -11,25 +11,25 @@ This repository contains bindings for the latest version of the Froala Editor (v
 ##Install
 
 Run
-```
+```bash
 	jspm install npm:aurelia-froala
 ```
 
 In your main.js or main.ts, extend the code
 
-```
+```javascript
 	aurelia.use
 		.standardConfiguration()
 ```
 
 with
-```
+```javascript
 	.plugin('aurelia-froala', config => {}
 ```
 
 In an Aurelia template, just use the aurelia-froala custom element to instantiate an editor. All [configuration options](https://www.froala.com/wysiwyg-editor/docs/options) can be set via the config attribute. 
 
-```
+```html
 	<aurelia-froala value.two-way="value"
 		config.bind="{
 			toolbarButtons: ['redo' , '|', 'fontFamily', '|', 'fontSize', '|', 'paragraphFormat', 'color', '|', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', 'outdent', 'indent', 'clearFormatting', 'insertTable', 'html'],
@@ -43,7 +43,7 @@ In an Aurelia template, just use the aurelia-froala custom element to instantiat
 ```
 
 All the [event handlers](https://www.froala.com/wysiwyg-editor/docs/events) are also available:
-```
+```html
 	<aurelia-froala value.two-way="value"
 		event-handlers.bind = "{
 			'paste.afterCleanup': processPaste
@@ -54,7 +54,7 @@ All the [event handlers](https://www.froala.com/wysiwyg-editor/docs/events) are 
 [Plugins](https://www.froala.com/wysiwyg-editor/docs/concepts/create-plugin), [custom buttons](https://www.froala.com/wysiwyg-editor/docs/concepts/custom-button) and other [languages](https://www.froala.com/wysiwyg-editor/languages) need to be activated globally. This is done in the main.js or main.ts:
 
 
-```
+```javascript
 	aurelia.use
 		.standardConfiguration()
 		.plugin('aurelia-froala', config => {
