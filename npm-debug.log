@@ -1,0 +1,130 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\hkrause\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish' ]
+2 info using npm@3.8.7
+3 info using node@v5.5.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: 'C:\\src\\aurelia-froala',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory C:\Users\hkrause\AppData\Roaming\npm-cache\aurelia-froala\1.0.4\package.tgz not in flight; packing
+9 verbose correctMkdir C:\Users\hkrause\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+10 info lifecycle aurelia-froala@1.0.4~prepublish: aurelia-froala@1.0.4
+11 silly lifecycle aurelia-froala@1.0.4~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ 'C:\\Users\\hkrause\\AppData\\Roaming\\npm-cache\\aurelia-froala\\1.0.4\\package.tgz',
+12 verbose tar pack   'C:\\src\\aurelia-froala' ]
+13 verbose tarball C:\Users\hkrause\AppData\Roaming\npm-cache\aurelia-froala\1.0.4\package.tgz
+14 verbose folder C:\src\aurelia-froala
+15 verbose addLocalTarball adding from inside cache C:\Users\hkrause\AppData\Roaming\npm-cache\aurelia-froala\1.0.4\package.tgz
+16 verbose correctMkdir C:\Users\hkrause\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+17 silly cache afterAdd aurelia-froala@1.0.4
+18 verbose afterAdd C:\Users\hkrause\AppData\Roaming\npm-cache\aurelia-froala\1.0.4\package\package.json not in flight; writing
+19 verbose correctMkdir C:\Users\hkrause\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+20 verbose afterAdd C:\Users\hkrause\AppData\Roaming\npm-cache\aurelia-froala\1.0.4\package\package.json written
+21 silly publish { name: 'aurelia-froala',
+21 silly publish   version: '1.0.4',
+21 silly publish   description: 'aurelia-froala\r ===\r [![NPM version][npm-image]][npm-url]',
+21 silly publish   main: 'index.js',
+21 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+21 silly publish   directories: { lib: 'dist', src: 'src' },
+21 silly publish   author: { name: 'Net at Work GmbH' },
+21 silly publish   license: 'Apache',
+21 silly publish   devDependencies:
+21 silly publish    { babel: '^6.3.26',
+21 silly publish      'babel-plugin-transform-decorators': '^6.8.0',
+21 silly publish      'babel-plugin-transform-decorators-legacy': '^1.3.4',
+21 silly publish      'babel-plugin-transform-es2015-modules-systemjs': '^6.9.0',
+21 silly publish      'babel-preset-es2015': '^6.9.0',
+21 silly publish      'babel-preset-stage-0': '^6.3.13',
+21 silly publish      'babel-runtime': '^6.9.0',
+21 silly publish      'core-js': '^2.4.0',
+21 silly publish      gulp: '^3.9.0',
+21 silly publish      'gulp-babel': '^6.1.1',
+21 silly publish      'gulp-bump': '^2.1.0',
+21 silly publish      'gulp-changed': '^1.3.0',
+21 silly publish      'gulp-sourcemaps': '^1.6.0',
+21 silly publish      'require-dir': '^0.3.0',
+21 silly publish      'run-sequence': '^1.2.1' },
+21 silly publish   dependencies:
+21 silly publish    { 'aurelia-binding': '^1.0.0-beta.1.0.1',
+21 silly publish      'aurelia-framework': '^1.0.0-beta.1.1.1',
+21 silly publish      'font-awesome': '^4.6.3',
+21 silly publish      'froala-editor': '^2.3.0',
+21 silly publish      jquery: '^2.2.4' },
+21 silly publish   jspm:
+21 silly publish    { dependencies:
+21 silly publish       { css: 'jspm:css',
+21 silly publish         'froala-editor': 'npm:froala-editor',
+21 silly publish         jquery: 'npm:jquery',
+21 silly publish         'font-awesome': 'npm:font-awesome' } },
+21 silly publish   readme: 'aurelia-froala\r\n===\r\n[![NPM version][npm-image]][npm-url] \r\n\r\nThis package provides a custom element for the [Froala editor](https://www.froala.com/wysiwyg-editor) in [Aurelia](http://aurelia.io/).\r\n\r\n##Version 2\r\nThis repository contains bindings for the latest version of the Froala Editor (version 2). Version 1 of Froala is not supported.\r\n\r\n\r\n##Install\r\n\r\nRun\r\n```bash\r\n\tjspm install npm:aurelia-froala\r\n```\r\n\r\nIn your main.js or main.ts, extend the code\r\n\r\n```javascript\r\n\taurelia.use\r\n\t\t.standardConfiguration()\r\n```\r\n\r\nwith\r\n```javascript\r\n\t.plugin(\'aurelia-froala\', config => {}\r\n```\r\n\r\nIn an Aurelia template, just use the aurelia-froala custom element to instantiate an editor. All [configuration options](https://www.froala.com/wysiwyg-editor/docs/options) can be set via the config attribute. \r\n\r\n```html\r\n\t<aurelia-froala value.two-way="value"\r\n\t\tconfig.bind="{\r\n\t\t\ttoolbarButtons: [\'redo\' , \'|\', \'fontFamily\', \'|\', \'fontSize\', \'|\', \'paragraphFormat\', \'color\', \'|\', \'bold\', \'italic\', \'underline\', \'strikethrough\', \'subscript\', \'superscript\', \'outdent\', \'indent\', \'clearFormatting\', \'insertTable\', \'html\'],\r\n\t\t\ttoolbarButtonsMD: [\'redo\' , \'|\', \'fontFamily\', \'|\', \'fontSize\', \'|\', \'paragraphFormat\', \'color\'],\r\n\t\t\ttoolbarButtonsSM: [\'redo\' , \'|\', \'fontFamily\', \'|\', \'fontSize\', \'|\', \'paragraphFormat\', \'color\'],\r\n\t\t\ttoolbarButtonsXS: [\'redo\' , \'|\', \'fontFamily\', \'|\', \'fontSize\', \'|\', \'paragraphFormat\', \'color\'],\r\n\t\t\tfontFamilySelection: true,\r\n\t\t\tfontSizeSelection: true\r\n\t\t}">\r\n\t</aurelia-froala>\r\n```\r\n\r\nAll the [event handlers](https://www.froala.com/wysiwyg-editor/docs/events) are also available:\r\n```html\r\n\t<aurelia-froala value.two-way="value"\r\n\t\tevent-handlers.bind = "{\r\n\t\t\t\'paste.afterCleanup\': processPaste\r\n\t\t}"\r\n```\r\n\r\n## Global configuration\r\n[Plugins](https://www.froala.com/wysiwyg-editor/docs/concepts/create-plugin), [custom buttons](https://www.froala.com/wysiwyg-editor/docs/concepts/custom-button) and other [languages](https://www.froala.com/wysiwyg-editor/languages) need to be activated globally. This is done in the main.js or main.ts:\r\n\r\n\r\n```javascript\r\n\taurelia.use\r\n\t\t.standardConfiguration()\r\n\t\t.plugin(\'aurelia-froala\', config => {\r\n\t\t\t// Load plugins\r\n\t\t\tconfig.addPlugin("colors");\r\n\t\t\tconfig.addPlugin("align");\r\n\t\t\tconfig.addPlugin("code_beautifier");\r\n\t\t\tconfig.addPlugin("image") // The image_manager plugin depends on the image plugin, so the former needs to loaded after the latter.\r\n\t\t\t\t.then(() => config.addPlugin("image_manager"));\r\n\r\n\t\t\t// Create a custom button\r\n\t\t\tconfig.global(editor => {\r\n\t\t\t\t// Define an icon\r\n\t\t\t\teditor.DefineIcon("insertFromServerIcon", {NAME: "folder"})\r\n\t\t\t\t// Register the new command. It can now be added to a toolbar using the command \'insertFromServer\'\r\n\t\t\t\teditor.RegisterCommand(\'insertFromServer\', {\r\n\t\t\t\t\ttitle: \'Insert from server\',\r\n\t\t\t\t\ticon: \'insertFromServerIcon\',\r\n\t\t\t\t\tundo: true,\r\n\t\t\t\t\tfocus: true,\r\n\t\t\t\t\trefreshAfterCallback: true,\r\n\t\t\t\t\tcallback: function () {\r\n\t\t\t\t\t\tconsole.log("Insert from server");\r\n\t\t\t\t\t}\r\n\t\t\t\t});\r\n\t\t\t});\r\n\r\n\t\t\t// Add another language\r\n\t\t\tconfig.addLanguage("de", {\r\n\t\t\t\t\t"Insert from server": "Vom Server einfügen",\r\n\t\t\t\t})\r\n\t\t\t})\r\n\t\t}\r\n```\r\nIf you add custom plugins or commands you might want to localize them. This is done by providing the localized strings in the second parameter of the addLanguage method.\r\n\r\nThe languages of all editors on a page are automatically adjusted when the global aurelia language is changed. You don\'t have to perform any additional magic. \r\n\r\n#Licencing\r\nWhile this package is licenced under the Apache licence, the Froala editor itself is not. Check out the [Froala Website](https://www.froala.com/wysiwyg-editor) for details.\r\n\r\n[npm-url]: https://npmjs.org/package/aurelia-froala\r\n[npm-image]: http://img.shields.io/npm/v/aurelia-froala.svg',
+21 silly publish   readmeFilename: 'readme.md',
+21 silly publish   gitHead: '6ad2b8fd37820d690550ea8fd5389989d8435aca',
+21 silly publish   _id: 'aurelia-froala@1.0.4',
+21 silly publish   _shasum: 'dbab045f2bbde3863b4839eb6d344c528492a3bc',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name aurelia-froala
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'aurelia-froala',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   name: 'aurelia-froala',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/aurelia-froala
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading C:\Users\hkrause\AppData\Roaming\npm-cache\aurelia-froala\1.0.4\package.tgz
+30 verbose request uri https://registry.npmjs.org/aurelia-froala
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 10:43:18
+33 verbose request using bearer token for auth
+34 verbose request id 6e6d79e3b3477acc
+35 http request PUT https://registry.npmjs.org/aurelia-froala
+36 http 403 https://registry.npmjs.org/aurelia-froala
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Mon, 06 Jun 2016 08:43:19 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-ams4148-AMS',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1465202598.475855,VS0,VE1004',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating C:\Users\hkrause\AppData\Roaming\npm-cache\registry.npmjs.org\aurelia-froala on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 1.0.4." : aurelia-froala
+40 verbose stack     at makeError (C:\Users\hkrause\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:264:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (C:\Users\hkrause\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:252:14)
+40 verbose stack     at Request._callback (C:\Users\hkrause\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:172:14)
+40 verbose stack     at Request.self.callback (C:\Users\hkrause\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:200:22)
+40 verbose stack     at emitTwo (events.js:100:13)
+40 verbose stack     at Request.emit (events.js:185:7)
+40 verbose stack     at Request.<anonymous> (C:\Users\hkrause\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:1041:10)
+40 verbose stack     at emitOne (events.js:95:20)
+40 verbose stack     at Request.emit (events.js:182:7)
+40 verbose stack     at IncomingMessage.<anonymous> (C:\Users\hkrause\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:968:12)
+41 verbose statusCode 403
+42 verbose pkgid aurelia-froala
+43 verbose cwd C:\src\aurelia-froala
+44 error Windows_NT 6.3.9600
+45 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\hkrause\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+46 error node v5.5.0
+47 error npm  v3.8.7
+48 error code E403
+49 error "You cannot publish over the previously published version 1.0.4." : aurelia-froala
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
