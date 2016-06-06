@@ -2,7 +2,7 @@ aurelia-froala
 ===
 [![NPM version][npm-image]][npm-url] 
 
-This package provides a custom element for the (Froala editor)[https://www.froala.com/wysiwyg-editor] in [Aurelia](http://aurelia.io/).
+This package provides a custom element for the [Froala editor](https://www.froala.com/wysiwyg-editor) in [Aurelia](http://aurelia.io/).
 
 ##Version 2
 This repository contains bindings for the latest version of the Froala Editor (version 2). Version 1 of Froala is not supported.
@@ -11,9 +11,9 @@ This repository contains bindings for the latest version of the Froala Editor (v
 ##Install
 
 Run
-`` 
-	jspm install aurelia-froala
-`` 
+```
+	jspm install npm:aurelia-froala
+```
 
 In your main.js or main.ts, extend the code
 
@@ -27,22 +27,22 @@ with
 	.plugin('aurelia-froala', config => {}
 ```
 
-In an Aurelia template, just use the aurelia-froala custom element to instantiate an editor. All (configuration options)[https://www.froala.com/wysiwyg-editor/docs/options] can be set via the config attribute. 
+In an Aurelia template, just use the aurelia-froala custom element to instantiate an editor. All [configuration options](https://www.froala.com/wysiwyg-editor/docs/options) can be set via the config attribute. 
 
 ```
 	<aurelia-froala value.two-way="value"
 		config.bind="{
-			toolbarButtons: ['redo' , '|', 'fontFamily', '|', 'fontSize', '|', 'paragraphFormat', 'color', '|', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', 'outdent', 'indent', 'clearFormatting', 'insertTable', 'html', '|', 'insertImage', 'imageGallery', 'insertTemplate'],
+			toolbarButtons: ['redo' , '|', 'fontFamily', '|', 'fontSize', '|', 'paragraphFormat', 'color', '|', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', 'outdent', 'indent', 'clearFormatting', 'insertTable', 'html'],
 			toolbarButtonsMD: ['redo' , '|', 'fontFamily', '|', 'fontSize', '|', 'paragraphFormat', 'color'],
 			toolbarButtonsSM: ['redo' , '|', 'fontFamily', '|', 'fontSize', '|', 'paragraphFormat', 'color'],
 			toolbarButtonsXS: ['redo' , '|', 'fontFamily', '|', 'fontSize', '|', 'paragraphFormat', 'color'],
 			fontFamilySelection: true,
-			fontSizeSelection: true,
+			fontSizeSelection: true
 		}">
 	</aurelia-froala>
 ```
 
-All the (event handlers)[https://www.froala.com/wysiwyg-editor/docs/events] are also available:
+All the [event handlers](https://www.froala.com/wysiwyg-editor/docs/events) are also available:
 ```
 	<aurelia-froala value.two-way="value"
 		event-handlers.bind = "{
@@ -51,7 +51,7 @@ All the (event handlers)[https://www.froala.com/wysiwyg-editor/docs/events] are 
 ```
 
 ## Global configuration
-(Plugins)[https://www.froala.com/wysiwyg-editor/docs/concepts/create-plugin], (custom buttons)[https://www.froala.com/wysiwyg-editor/docs/concepts/custom-button] and other (languages)[https://www.froala.com/wysiwyg-editor/languages] need to be activated globally. This is done in the main.js or main.ts:
+[Plugins](https://www.froala.com/wysiwyg-editor/docs/concepts/create-plugin), [custom buttons](https://www.froala.com/wysiwyg-editor/docs/concepts/custom-button) and other [languages](https://www.froala.com/wysiwyg-editor/languages) need to be activated globally. This is done in the main.js or main.ts:
 
 
 ```
@@ -94,4 +94,4 @@ If you add custom plugins or commands you might want to localize them. This is d
 The languages of all editors on a page are automatically adjusted when the global aurelia language is changed. You don't have to perform any additional magic. 
 
 #Licencing
-While this package is licenced under the Apache licence, the Froala editor itself is not. Check out the (Froala Website)[https://www.froala.com/wysiwyg-editor] for details.
+While this package is licenced under the Apache licence, the Froala editor itself is not. Check out the [Froala Website](https://www.froala.com/wysiwyg-editor) for details.
