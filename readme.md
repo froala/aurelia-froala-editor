@@ -24,7 +24,7 @@ In your main.js or main.ts, extend the code
 
 with
 ```javascript
-	.plugin('aurelia-froala', config => {}
+	.plugin('aurelia-froala', config => {});
 ```
 
 In an Aurelia template, just use the aurelia-froala custom element to instantiate an editor. All [configuration options](https://www.froala.com/wysiwyg-editor/docs/options) can be set via the config attribute. 
