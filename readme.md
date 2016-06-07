@@ -1,4 +1,4 @@
-aurelia-froala
+aurelia-froala-editor
 ===
 [![NPM version][npm-image]][npm-url] 
 
