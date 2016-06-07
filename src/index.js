@@ -8,6 +8,9 @@ import "froala-editor/css/froala_style.min.css!";
 export function configure(aurelia, config) {
 	aurelia.globalResources('./aurelia-froala');
 	let c = {
+		setLicense: license => {
+		   $.FroalaEditor.DEFAULTS.key  = license;
+		},
 		addPlugin: name => Promise.all(
 			[System.import(`froala-editor/js/plugins/${name}.min`, __moduleName).then(m=> m()), 
 			System.import(`froala-editor/css/plugins/${name}.css!`, __moduleName).catch(e => {})]),
