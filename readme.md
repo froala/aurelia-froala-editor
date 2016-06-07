@@ -51,8 +51,13 @@ All the [event handlers](https://www.froala.com/wysiwyg-editor/docs/events) are 
 ```
 
 ## Global configuration
-[Plugins](https://www.froala.com/wysiwyg-editor/docs/concepts/create-plugin), [custom buttons](https://www.froala.com/wysiwyg-editor/docs/concepts/custom-button) and other [languages](https://www.froala.com/wysiwyg-editor/languages) need to be activated globally. This is done in the main.js or main.ts:
+To use the editor, you'll need a licnse (see [Froala Website](https://www.froala.com/wysiwyg-editor) for details). Once you have obtained one, you can activate it using this snippet:
 
+```javascript
+	config.setLicense("Your license key");
+``` 
+
+[Plugins](https://www.froala.com/wysiwyg-editor/docs/concepts/create-plugin), [custom buttons](https://www.froala.com/wysiwyg-editor/docs/concepts/custom-button) and other [languages](https://www.froala.com/wysiwyg-editor/languages) need to be activated globally. This is done in the main.js or main.ts:
 
 ```javascript
 	aurelia.use
