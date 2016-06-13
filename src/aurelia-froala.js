@@ -62,6 +62,7 @@ export class AureliaFroala {
 			
 			}
 		}
+		this.instance.on('froalaEditor.contentChanged', (e, editor) => this.value = editor.html.get());
 	}
 	
 	updateEmptyStatus() {
