@@ -38,7 +38,7 @@
   },
   "jspm": {
     "dependencies": {
-      "css": "jspm:css",
+      "css": "css",
       "froala-editor": "npm:froala-editor",
       "jquery": "npm:jquery",
 	  "font-awesome": "npm:font-awesome"
