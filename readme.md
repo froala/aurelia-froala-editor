@@ -12,7 +12,7 @@ This repository contains bindings for the latest version of the Froala Editor (v
 
 Run
 ```bash
-	jspm install npm:aurelia-froala
+	jspm install npm:aurelia-froala-editor
 ```
 
 In your main.js or main.ts, extend the code
