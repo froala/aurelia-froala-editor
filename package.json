@@ -1,6 +1,6 @@
 {
   "name": "aurelia-froala-editor",
-  "version": "2.3.3",
+  "version": "2.3.3-1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -38,10 +38,10 @@
   },
   "jspm": {
     "dependencies": {
-       "css": "jspm:css",
-      "froala-editor": "npm:froala-editor@^2.3.3",
-      "jquery": "npm:jquery@^2.2.4",
-      "font-awesome": "npm:font-awesome@^4.6.3"
+       "css": "css",
+      "froala-editor": "froala-editor@^2.3.3",
+      "jquery": "jquery@^2.2.4",
+      "font-awesome": "font-awesome@^4.6.3"
     }
   }
 }
