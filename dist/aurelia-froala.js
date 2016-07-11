@@ -148,6 +148,9 @@ System.register(['aurelia-framework', 'aurelia-binding', 'aurelia-i18n', 'jquery
 								_loop(eventHandlerName);
 							}
 						}
+						this.instance.on('froalaEditor.contentChanged', function (e, editor) {
+							return _this2.value = editor.html.get();
+						});
 					}
 				}, {
 					key: 'updateEmptyStatus',

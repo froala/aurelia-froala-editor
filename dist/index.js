@@ -14,6 +14,9 @@ System.register(["font-awesome/./css/font-awesome.min.css!", "jquery", "froala-e
 			function configure(aurelia, config) {
 				aurelia.globalResources('./aurelia-froala');
 				var c = {
+					setLicense: function setLicense(license) {
+						$.FroalaEditor.DEFAULTS.key = license;
+					},
 					addPlugin: function addPlugin(name) {
 						return Promise.all([System.import("froala-editor/js/plugins/" + name + ".min", _context.id).then(function (m) {
 							return m();
