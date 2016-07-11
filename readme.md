@@ -1,6 +1,5 @@
 aurelia-froala-editor
 ===
-[![NPM version][npm-image]][npm-url] 
 
 This package provides a custom element for the [Froala editor](https://www.froala.com/wysiwyg-editor) in [Aurelia](http://aurelia.io/).
 
@@ -12,7 +11,7 @@ This repository contains bindings for the latest version of the Froala Editor (v
 
 Run
 ```bash
-	jspm install npm:aurelia-froala-editor
+	jspm install github:froala/aurelia-froala-edior
 ```
 
 In your main.js or main.ts, extend the code
@@ -100,6 +99,3 @@ The languages of all editors on a page are automatically adjusted when the globa
 
 #Licencing
 While this package is licenced under the Apache licence, the Froala editor itself is not. Check out the [Froala Website](https://www.froala.com/wysiwyg-editor) for details.
-
-[npm-url]: https://npmjs.org/package/aurelia-froala-editor
-[npm-image]: http://img.shields.io/npm/v/aurelia-froala-editor.svg
