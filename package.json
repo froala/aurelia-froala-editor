@@ -1,6 +1,6 @@
 {
   "name": "aurelia-froala-editor",
-  "version": "2.3.3-2",
+  "version": "2.3.3-3",
   "description": "",
   "main": "indes.js",
   "scripts": {
@@ -38,7 +38,7 @@
   },
   "jspm": {
     "dependencies": {
-       "css": "jspm:css",
+       "css": "github:systemjs/plugin-css",
       "froala-editor": "froala-editor@^2.3.3",
       "jquery": "jquery@^2.2.4",
       "font-awesome": "font-awesome@^4.6.3"
