@@ -2,10 +2,6 @@
 
 >This package provides a custom element for the [Froala editor](https://www.froala.com/wysiwyg-editor) in [Aurelia](http://aurelia.io/).
 
-## Version 2
-This repository contains bindings for the latest version of the Froala Editor (version 2). Version 1 of Froala is not supported.
-
-
 ## Install
 
 Run
@@ -102,6 +98,6 @@ If you add custom plugins or commands you might want to localize them. This is d
 
 The languages of all editors on a page are automatically adjusted when the global aurelia language is changed. You don't have to perform any additional magic. 
 
-## Licencing
+## License
 
-While this package is licenced under the Apache licence, the Froala editor itself is not. Check out the [Froala Website](https://www.froala.com/wysiwyg-editor) for details.
+The `aurelia-froala-editor` project is under the Apache licence. However, to use the Froala WYSIWYG HTML Editor you should purchase a license for it. Froala has [3 different licenses](https://www.froala.com/wysiwyg-editor/pricing) for commercial use. For details please see [License Agreement](https://www.froala.com/wysiwyg-editor/terms).
