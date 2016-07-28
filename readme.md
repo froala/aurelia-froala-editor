@@ -1,6 +1,6 @@
 # aurelia-froala-editor
 
-This package provides a custom element for the [Froala editor](https://www.froala.com/wysiwyg-editor) in [Aurelia](http://aurelia.io/).
+>This package provides a custom element for the [Froala editor](https://www.froala.com/wysiwyg-editor) in [Aurelia](http://aurelia.io/).
 
 ## Version 2
 This repository contains bindings for the latest version of the Froala Editor (version 2). Version 1 of Froala is not supported.
