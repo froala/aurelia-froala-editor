@@ -32,7 +32,6 @@
   },
   "dependencies": {
     "aurelia-binding": "^1.0.1",
-    "aurelia-bootstrapper": "^1.0.0",
     "aurelia-event-aggregator": "^1.0.0",
     "aurelia-i18n": "^1.0.0",
     "aurelia-framework": "^1.0.0-beta.1.1.1",
@@ -48,7 +47,6 @@
     },
     "dependencies": {
       "aurelia-binding": "npm:aurelia-binding@^1.0.1",
-      "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0",
       "aurelia-event-aggregator": "npm:aurelia-event-aggregator@^1.0.0",
       "aurelia-i18n": "npm:aurelia-i18n@^1.0.0",
       "css": "github:systemjs/plugin-css@^0.1.25",
