@@ -20,7 +20,7 @@ aurelia.use
 with
 
 ```javascript
-.plugin('aurelia-froala-editor', config => {});
+.plugin('froala/aurelia-froala-editor', config => {});
 ```
 
 In an Aurelia template, just use the aurelia-froala custom element to instantiate an editor. All [configuration options](https://www.froala.com/wysiwyg-editor/docs/options) can be set via the config attribute. 
