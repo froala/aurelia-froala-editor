@@ -14,7 +14,7 @@ In your main.js or main.ts, extend the code
 
 ```javascript
 aurelia.use
-	.standardConfiguration()
+	.standardConfigurgulation()
 ```
 
 with

@@ -1,8 +1,8 @@
 {
   "name": "aurelia-froala-editor",
-  "version": "2.3.4-1",
+  "version": "2.3.4-2",
   "description": "",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -40,11 +40,6 @@
     "jquery": "^2.2.4"
   },
   "jspm": {
-    "main": "index.js",
-    "directories": {
-      "lib": "dist",
-      "src": "src"
-    },
     "dependencies": {
       "aurelia-binding": "npm:aurelia-binding@^1.0.1",
       "aurelia-event-aggregator": "npm:aurelia-event-aggregator@^1.0.0",
@@ -53,11 +48,6 @@
       "font-awesome": "npm:font-awesome@^4.6.3",
       "froala-editor": "npm:froala-editor@^2.3.4",
       "jquery": "npm:jquery@^2.2.4"
-    },
-    "devDependencies": {
-      "babel": "npm:babel-core@^5.8.24",
-      "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4"
     }
   }
 }
