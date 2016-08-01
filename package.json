@@ -1,6 +1,6 @@
 {
   "name": "aurelia-froala-editor",
-  "version": "2.3.4-4",
+  "version": "2.3.4-5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -33,7 +33,7 @@
     "aurelia-binding": "^1.0.0",
     "aurelia-framework": "^1.0.0",
     "font-awesome": "^4.6.3",
-    "froala-editor": "^2.3.0",
+    "froala-editor": "^2.3.4",
     "jquery": "^2.2.4"
   },
   "jspm": {
