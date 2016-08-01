@@ -14,13 +14,13 @@ In your main.js or main.ts, extend the code
 
 ```javascript
 aurelia.use
-	.standardConfigurgulation()
+	.standardConfiguration()
 ```
 
 with
 
 ```javascript
-.plugin('froala/aurelia-froala-editor', config => {});
+.plugin('aurelia-froala-editor', config => {});
 ```
 
 In an Aurelia template, just use the aurelia-froala custom element to instantiate an editor. All [configuration options](https://www.froala.com/wysiwyg-editor/docs/options) can be set via the config attribute. 
