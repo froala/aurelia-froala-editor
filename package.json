@@ -30,18 +30,24 @@
     "run-sequence": "^1.2.1"
   },
   "dependencies": {
-    "aurelia-binding": "^1.0.0",
+    "aurelia-binding": "^1.0.1",
+    "aurelia-event-aggregator": "^1.0.0",
+    "aurelia-i18n": "^1.0.0",
     "aurelia-framework": "^1.0.0",
+    "systemjs-plugin-css": "^0.1.26",
     "font-awesome": "^4.6.3",
     "froala-editor": "^2.3.4",
     "jquery": "^2.2.4"
   },
   "jspm": {
     "dependencies": {
+      "aurelia-binding": "npm:aurelia-binding@^1.0.1",
+      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@^1.0.0",
+      "aurelia-i18n": "npm:aurelia-i18n@^1.0.0",
       "css": "github:systemjs/plugin-css",
       "froala-editor": "npm:froala-editor",
       "jquery": "npm:jquery",
-	  "font-awesome": "npm:font-awesome"
+      "font-awesome": "npm:font-awesome"
     }
   }
 }
