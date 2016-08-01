@@ -19,7 +19,6 @@ System.config({
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "core-js": "npm:core-js@1.2.7",
-    "css": "github:systemjs/plugin-css@0.1.25",
     "font-awesome": "npm:font-awesome@4.6.3",
     "froala-editor": "npm:froala-editor@2.3.4",
     "jquery": "npm:jquery@2.2.4",
@@ -121,7 +120,7 @@ System.config({
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:font-awesome@4.6.3": {
-      "css": "github:systemjs/plugin-css@0.1.25"
+      "css": "github:systemjs/plugin-css@0.1.26"
     },
     "npm:froala-editor@2.3.4": {
       "font-awesome": "npm:font-awesome@4.6.3",
