@@ -10,7 +10,7 @@
     "lib": "dist",
     "src": "src"
   },
-  "registry": "jspm",
+  "registry": "github",
   "author": "Net at Work GmbH",
   "license": "Apache",
   "devDependencies": {
