@@ -13,7 +13,7 @@ var compilerOptions = {
   comments: false,
   compact: false,
   presets: ["es2015", "stage-0"],
-  plugins: ["transform-es2015-modules-systemjs", "transform-decorators-legacy", "transform-decorators", ]
+  plugins: ["transform-es2015-modules-commonjs", "transform-decorators-legacy", "transform-decorators", ]
 };
 
 gulp.task('build-html', function() {
