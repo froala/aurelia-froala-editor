@@ -1,7 +1,7 @@
 {
   "name": "aurelia-froala-editor",
-  "version": "2.3.4-5",
-  "description": "",
+  "version": "2.3.4-6",
+  "description": "Aurelia plugin for Froala WYSIWYG HTML rich text editor",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
