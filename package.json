@@ -2,7 +2,7 @@
   "name": "aurelia-froala-editor",
   "version": "2.3.4-4",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
