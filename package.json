@@ -41,9 +41,9 @@
   },
   "jspm": {
     "dependencies": {
-      "aurelia-binding": "npm:aurelia-binding@^1.0.1",
-      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@^1.0.0",
-      "aurelia-i18n": "npm:aurelia-i18n@^1.0.0",
+      "aurelia-binding": "npm:aurelia-binding",
+      "aurelia-event-aggregator": "npm:aurelia-event-aggregator",
+      "aurelia-i18n": "npm:aurelia-i18n",
       "css": "github:systemjs/plugin-css",
       "froala-editor": "npm:froala-editor",
       "jquery": "npm:jquery",
