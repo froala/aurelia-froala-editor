@@ -56,7 +56,7 @@ To use the editor, you'll need a licnse (see [Froala Website](https://www.froala
 config.setLicense("Your license key");
 ``` 
 
-[Plugins](http://froala.dev/wysiwyg-editor/docs/concepts/custom/plugin), [custom buttons](http://froala.dev/wysiwyg-editor/docs/concepts/custom/button) and other [languages](https://www.froala.com/wysiwyg-editor/languages) need to be activated globally. This is done in the main.js or main.ts:
+[Plugins](http://froala.com/wysiwyg-editor/docs/concepts/custom/plugin), [custom buttons](http://froala.com/wysiwyg-editor/docs/concepts/custom/button) and other [languages](https://www.froala.com/wysiwyg-editor/languages) need to be activated globally. This is done in the main.js or main.ts:
 
 ```javascript
 aurelia.use
