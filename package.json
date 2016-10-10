@@ -1,6 +1,6 @@
 {
   "name": "aurelia-froala-editor",
-  "version": "2.3.4-10",
+  "version": "2.3.4-11",
   "description": "Aurelia plugin for Froala WYSIWYG HTML rich text editor",
   "main": "index.js",
   "scripts": {
@@ -51,7 +51,7 @@
       "aurelia-i18n": "npm:aurelia-i18n@^1.0.0",
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@^1.0.0",
       "aurelia-loader": "npm:aurelia-loader@^1.0.0",
-      "css": "systemjs-plugin-css",
+      "css": "css",
       "froala-editor": "npm:froala-editor",
       "jquery": "npm:jquery",
       "font-awesome": "npm:font-awesome"
