@@ -51,7 +51,7 @@
       "aurelia-i18n": "npm:aurelia-i18n@^1.0.0",
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@^1.0.0",
       "aurelia-loader": "npm:aurelia-loader@^1.0.0",
-      "css": "systemjs-plugin-css@ 0.1.26",
+      "css": "systemjs-plugin-css@^0.1.26",
       "froala-editor": "npm:froala-editor@^2.3.4",
       "jquery": "npm:jquery@^2.2.4",
       "font-awesome": "npm:font-awesome@^4.6.3"
