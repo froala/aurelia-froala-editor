@@ -6,12 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+	  "type": "git",
+	  "url": "https://github.com/froala/aurelia-froala-editor"
+  },
   "directories": {
     "lib": "dist",
     "src": "src"
   },
   "author": "Net at Work GmbH",
-  "license": "Apache",
+  "license": "Apache-2.0",
   "devDependencies": {
     "babel": "^6.3.26",
     "babel-plugin-transform-decorators": "^6.13.0",
@@ -47,7 +51,7 @@
       "aurelia-i18n": "npm:aurelia-i18n@^1.0.0",
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@^1.0.0",
       "aurelia-loader": "npm:aurelia-loader@^1.0.0",
-      "css": "github:systemjs/plugin-css",
+      "css": "systemjs-plugin-css",
       "froala-editor": "npm:froala-editor",
       "jquery": "npm:jquery",
       "font-awesome": "npm:font-awesome"
