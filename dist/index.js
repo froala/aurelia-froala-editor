@@ -25,14 +25,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function configure(aurelia, config) {
 	aurelia.globalResources('./aurelia-froala');
+	var moduleName = typeof __moduleName != 'undefined' ? __moduleName : module.id;
 	var c = {
 		setLicense: function setLicense(license) {
 			_jquery2.default.FroalaEditor.DEFAULTS.key = license;
 		},
 		addPlugin: function addPlugin(name) {
-			return Promise.all([System.import("froala-editor/js/plugins/" + name + ".min", __moduleName).then(function (m) {
+			return Promise.all([System.import("froala-editor/js/plugins/" + name + ".min", moduleName).then(function (m) {
 				return m();
-			}), System.import("froala-editor/css/plugins/" + name + ".css!", __moduleName).catch(function (e) {})]);
+			}), System.import("froala-editor/css/plugins/" + name + ".css!", moduleName).catch(function (e) {})]);
 		},
 		global: function global(callback) {
 			callback(_jquery2.default.FroalaEditor);
@@ -41,7 +42,7 @@ function configure(aurelia, config) {
 			_jquery2.default.FroalaEditor.DEFAULTS = _jquery2.default.extend(_jquery2.default.FroalaEditor.DEFAULTS, options);
 		},
 		addLanguage: function addLanguage(language, additionalTranslations) {
-			return System.import("froala-editor/js/languages/" + language, __moduleName).then(function () {
+			return System.import("froala-editor/js/languages/" + language, moduleName).then(function () {
 				return additionalTranslations && Object.assign(_jquery2.default.FE.LANGUAGE[language].translation, additionalTranslations);
 			});
 		}
