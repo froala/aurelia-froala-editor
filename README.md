@@ -19,9 +19,9 @@ import 'font-awesome/css/font-awesome.css';
 // Editor files.
 import "froala-editor/js/froala_editor.pkgd.min.js";
 import "froala-editor/css/froala_editor.pkgd.min.css";
+
 ...
 
-froala.default();
 aurelia.use.plugin('aurelia-froala-editor');
 ```
 
@@ -43,6 +43,7 @@ import * as froala from 'froala-editor/js/froala_editor.pkgd.min.js';
 import 'froala-editor/css/froala_editor.pkgd.min.css!';
 
 ...
+
 froala.default();
 aurelia.use.plugin('aurelia-froala-editor');
 ```
