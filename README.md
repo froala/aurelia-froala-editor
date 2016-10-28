@@ -27,7 +27,7 @@ aurelia.use
 with
 
 ```javascript
-.plugin('aurelia-froala-editor', config => {});
+.plugin('aurelia-froala-editor');
 ```
 
 In an Aurelia template, just use the aurelia-froala custom element to instantiate an editor.
