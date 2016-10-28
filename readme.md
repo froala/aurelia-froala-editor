@@ -1,58 +1,103 @@
-# aurelia-skeleton-plugin
+# aurelia-froala-editor
 
-[![ZenHub](https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png)](https://zenhub.io)
-[![Join the chat at https://gitter.im/aurelia/discuss](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aurelia/discuss?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+>This package provides a custom element for the [Froala editor](https://www.froala.com/wysiwyg-editor) in [Aurelia](http://aurelia.io/).
 
-This skeleton is part of the [Aurelia](http://www.aurelia.io/) platform. It sets up a standard aurelia plugin using gulp to build your ES6 code with the Babel compiler. Karma/Jasmine testing is also configured.
+## Install
 
-> To keep up to date on [Aurelia](http://www.aurelia.io/), please visit and subscribe to [the official blog](http://blog.aurelia.io/) and [our email list](http://eepurl.com/ces50j). We also invite you to [follow us on twitter](https://twitter.com/aureliaeffect). If you have questions, please [join our community on Gitter](https://gitter.im/aurelia/discuss) or use [stack overflow](http://stackoverflow.com/search?q=aurelia). Documentation can be found [in our developer hub](http://aurelia.io/hub.html). If you would like to have deeper insight into our development process, please install the [ZenHub](https://zenhub.io) Chrome or Firefox Extension and visit any of our repository's boards.
+Run
 
-## Building The Code
+```bash
+jspm install aurelia-froala-editor
+```
 
-To build the code, follow these steps.
+In your main.js or main.ts, extend the code
 
-1. Ensure that [NodeJS](http://nodejs.org/) is installed. This provides the platform on which the build tooling runs.
-2. From the project folder, execute the following command:
+```javascript
+aurelia.use
+	.standardConfiguration()
+```
 
-  ```shell
-  npm install
-  ```
-3. Ensure that [Gulp](http://gulpjs.com/) is installed. If you need to install it, use the following command:
+with
 
-  ```shell
-  npm install -g gulp
-  ```
-4. To build the code, you can now run:
+```javascript
+.plugin('aurelia-froala-editor', config => {});
+```
 
-  ```shell
-  gulp build
-  ```
-5. You will find the compiled code in the `dist` folder, available in three module formats: AMD, CommonJS and ES6.
+In an Aurelia template, just use the aurelia-froala custom element to instantiate an editor. All [configuration options](https://www.froala.com/wysiwyg-editor/docs/options) can be set via the config attribute.
 
-6. See `gulpfile.js` for other tasks related to generating the docs and linting.
+```html
+<aurelia-froala value.two-way="value"
+	config.bind="{
+		toolbarButtons: ['redo' , '|', 'fontFamily', '|', 'fontSize', '|', 'paragraphFormat', 'color', '|', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', 'outdent', 'indent', 'clearFormatting', 'insertTable', 'html'],
+		toolbarButtonsMD: ['redo' , '|', 'fontFamily', '|', 'fontSize', '|', 'paragraphFormat', 'color'],
+		toolbarButtonsSM: ['redo' , '|', 'fontFamily', '|', 'fontSize', '|', 'paragraphFormat', 'color'],
+		toolbarButtonsXS: ['redo' , '|', 'fontFamily', '|', 'fontSize', '|', 'paragraphFormat', 'color'],
+		fontFamilySelection: true,
+		fontSizeSelection: true
+	}">
+</aurelia-froala>
+```
 
-## Running The Tests
+All the [event handlers](https://www.froala.com/wysiwyg-editor/docs/events) are also available:
 
-To run the unit tests, first ensure that you have followed the steps above in order to install all dependencies and successfully build the library. Once you have done that, proceed with these additional steps:
+```html
+<aurelia-froala value.two-way="value"
+	event-handlers.bind = "{
+		'paste.afterCleanup': processPaste
+	}>"
+</aurelia-froala>
+```
 
-1. Ensure that the [Karma](http://karma-runner.github.io/) CLI is installed. If you need to install it, use the following command:
+## Global configuration
 
-  ```shell
-  npm install -g karma-cli
-  ```
-2. Ensure that [jspm](http://jspm.io/) is installed. If you need to install it, use the following commnand:
+To use the editor, you'll need a licnse (see [Froala Website](https://www.froala.com/wysiwyg-editor) for details). Once you have obtained one, you can activate it using this snippet:
 
-  ```shell
-  npm install -g jspm
-  ```
-3. Install the client-side dependencies with jspm:
+```javascript
+config.setLicense("Your license key");
+```
 
-  ```shell
-  jspm install
-  ```
+[Plugins](http://froala.com/wysiwyg-editor/docs/concepts/custom/plugin), [custom buttons](http://froala.com/wysiwyg-editor/docs/concepts/custom/button) and other [languages](https://www.froala.com/wysiwyg-editor/languages) need to be activated globally. This is done in the main.js or main.ts:
 
-4. You can now run the tests with this command:
+```javascript
+aurelia.use
+	.standardConfiguration()
+	.plugin('aurelia-froala', config => {
+		// Load plugins
+		config.addPlugin("colors");
+		config.addPlugin("align");
+		config.addPlugin("code_beautifier");
+		config.addPlugin("image") // The image_manager plugin depends on the image plugin, so the former needs to loaded after the latter.
+			.then(() => config.addPlugin("image_manager"));
 
-  ```shell
-  karma start
-  ```
+		// Create a custom button
+		config.global(editor => {
+			// Define an icon
+			editor.DefineIcon("insertFromServerIcon", {NAME: "folder"})
+			// Register the new command. It can now be added to a toolbar using the command 'insertFromServer'
+			editor.RegisterCommand('insertFromServer', {
+				title: 'Insert from server',
+				icon: 'insertFromServerIcon',
+				undo: true,
+				focus: true,
+				refreshAfterCallback: true,
+				callback: function () {
+					console.log("Insert from server");
+				}
+			});
+		});
+
+		// Add another language
+		config.addLanguage("de", {
+			"Insert from server": "Vom Server einfügen",
+		})
+	})
+}
+```
+
+If you add custom plugins or commands you might want to localize them. This is done by providing the localized strings in the second parameter of the addLanguage method.
+
+The languages of all editors on a page are automatically adjusted when the global aurelia language is changed. You don't have to perform any additional magic.
+
+## License
+
+The `aurelia-froala-editor` project is under the Apache licence. However, to use the Froala WYSIWYG HTML Editor you should purchase a license for it. Froala has [3 different licenses](https://www.froala.com/wysiwyg-editor/pricing) for commercial use. For details please see [License Agreement](https://www.froala.com/wysiwyg-editor/terms).
