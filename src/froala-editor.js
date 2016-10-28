@@ -1,22 +1,22 @@
 'use strict'
+
 import {customElement, bindable, inject} from 'aurelia-framework';
 import {ObserverLocator} from "aurelia-binding";
 import {I18N} from "aurelia-i18n";
-import $ from "jquery";
 import {EventAggregator} from 'aurelia-event-aggregator';
 
-@customElement('aurelia-froala')
+customElement('froala-editor')
 @inject(Element, ObserverLocator, I18N, EventAggregator)
-export class AureliaFroala { 
+export class FroalaEditor {
 	@bindable value;
 	@bindable config = {}
 	@bindable eventHandlers = {}
-	 
+
 	element;
 	instance;
 	i18n;
 	i18nInitialized = false;
-		 
+
 	constructor(element, observerLocator, i18n, eventAggregator) {
 		this.element = element;
 		this.subscriptions = [
@@ -34,13 +34,13 @@ export class AureliaFroala {
         	this.processLanguageChanged();
       	});
 	}
-	
+
 	processLanguageChanged() {
 		this.tearDownFroala();
 		this.setupFroala();
 	}
-	
-	
+
+
 	setupFroala() {
 		this.instance =	$(this.element.getElementsByTagName("div")[0]);
 
@@ -57,32 +57,32 @@ export class AureliaFroala {
 				let handler = this.eventHandlers[eventHandlerName];
 				this.instance.on(`froalaEditor.${eventHandlerName}`, function() {
 					let p = arguments;
-					return handler.apply(this, p) 
+					return handler.apply(this, p)
 				});
-			
+
 			}
 		}
 		this.instance.on('froalaEditor.contentChanged', (e, editor) => this.value = editor.html.get());
 	}
-	
+
 	updateEmptyStatus() {
 
 	}
-	
+
 	tearDownFroala() {
 		if (this.instance && this.instance.data('froala.editor')) {
       		this.instance.froalaEditor('destroy');
     	}
 		this.instance = null;
 	}
-	
+
 	attached() {
-		this.setupFroala();		
+		this.setupFroala();
 	}
 
-	
-		
+
+
 	detached() {
 		this.tearDownFroala();
-	} 
-} 
+	}
+}

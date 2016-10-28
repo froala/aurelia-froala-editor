@@ -1,2 +1,9 @@
 node_modules
 jspm_packages
+<<<<<<< HEAD
+=======
+bower_components
+.idea
+.DS_STORE
+build/reports
+>>>>>>> webpack_compatible
