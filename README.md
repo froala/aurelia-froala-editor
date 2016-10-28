@@ -5,31 +5,48 @@
 ## Install
 
 ### With Webpack
+Run:
 ```bash
 npm install aurelia-froala-editor
 ```
 
-### With JSPM
-Run
+In your main.js or main.ts file:
 
+```javascript
+// Font Awesome.
+import 'font-awesome/css/font-awesome.css';
+
+// Editor files.
+import "froala-editor/js/froala_editor.pkgd.min.js";
+import "froala-editor/css/froala_editor.pkgd.min.css";
+...
+
+aurelia.use.plugin('aurelia-froala-editor');
+```
+
+
+### With JSPM
+Run:
 ```bash
 jspm install aurelia-froala-editor
 ```
 
+In your main.js or main.ts file:
+
+```javascript
+// Font Awesome.
+import 'font-awesome/css/font-awesome.css!';
+
+// Editor JS.
+import * as froala from 'froala-editor/js/froala_editor.pkgd.min.js';
+import 'froala-editor/css/froala_editor.pkgd.min.css!';
+
+...
+
+aurelia.use.plugin('aurelia-froala-editor');
+```
+
 ## Usage
-In your main.js or main.ts, extend the code
-
-```javascript
-aurelia.use
-	.standardConfiguration()
-```
-
-with
-
-```javascript
-.plugin('aurelia-froala-editor');
-```
-
 In an Aurelia template, just use the aurelia-froala custom element to instantiate an editor.
 
 ```html
