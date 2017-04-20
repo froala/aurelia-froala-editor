@@ -76,7 +76,7 @@
     "dependencies": {
       "jquery": "npm:jquery",
       "font-awesome": "npm:font-awesome",
-      "froala-editor": ">=2.5.1",
+      "froala-editor": "npm:froala-editor@^2.5.1",
       "aurelia-binding": "npm:aurelia-binding@^1.0.1",
       "aurelia-event-aggregator": "npm:aurelia-event-aggregator@^1.0.0",
       "aurelia-i18n": "npm:aurelia-i18n@^1.0.0",
