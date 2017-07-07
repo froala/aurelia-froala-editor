@@ -4,13 +4,13 @@
 
 ## Table of contents
 
-1. [Installation instructions](https://github.com/froala/angular-froala-wysiwyg#installation-instructions)
+1. [Installation instructions](#installation-instructions)
 2. [Integration](#integration)
    1. [With Aurelia CLI](#with-angular-cli)
    2. [With Webpack](#with-webpack)
    3. [With JSPM](#with-jspm)
 3. [Usage](#usage)
-4. [License](https://github.com/froala/angular-froala-wysiwyg#license)
+4. [License](#license)
 
 ## Installation instructions
 
