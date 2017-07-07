@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', 'aurelia-binding', 'aurelia-event-aggregator', './froala-editor-config'], function (exports, _aureliaFramework, _aureliaBinding, _aureliaEventAggregator, _froalaEditorConfig) {
+define(['exports', 'aurelia-framework', 'aurelia-binding', './froala-editor-config'], function (exports, _aureliaFramework, _aureliaBinding, _froalaEditorConfig) {
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -57,8 +57,8 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', 'aurelia-event-aggreg
 
 	var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
 
-	var FroalaEditor = exports.FroalaEditor = (_dec = (0, _aureliaFramework.customElement)('froala-editor'), _dec2 = (0, _aureliaFramework.inject)(Element, _froalaEditorConfig.Config, _aureliaBinding.ObserverLocator, _aureliaEventAggregator.EventAggregator), _dec(_class = _dec2(_class = (_class2 = function () {
-		function FroalaEditor(element, config, observerLocator, eventAggregator) {
+	var FroalaEditor = exports.FroalaEditor = (_dec = (0, _aureliaFramework.customElement)('froala-editor'), _dec2 = (0, _aureliaFramework.inject)(Element, _froalaEditorConfig.Config, _aureliaBinding.ObserverLocator), _dec(_class = _dec2(_class = (_class2 = function () {
+		function FroalaEditor(element, config, observerLocator) {
 			var _this = this;
 
 			_classCallCheck(this, FroalaEditor);

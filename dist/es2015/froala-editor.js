@@ -45,13 +45,12 @@ function _initializerWarningHelper(descriptor, context) {
 
 import { inject, customElement, bindable } from 'aurelia-framework';
 import { ObserverLocator } from "aurelia-binding";
-import { EventAggregator } from 'aurelia-event-aggregator';
 
 import { Config } from './froala-editor-config';
 
-export let FroalaEditor = (_dec = customElement('froala-editor'), _dec2 = inject(Element, Config, ObserverLocator, EventAggregator), _dec(_class = _dec2(_class = (_class2 = class FroalaEditor {
+export let FroalaEditor = (_dec = customElement('froala-editor'), _dec2 = inject(Element, Config, ObserverLocator), _dec(_class = _dec2(_class = (_class2 = class FroalaEditor {
 
-	constructor(element, config, observerLocator, eventAggregator) {
+	constructor(element, config, observerLocator) {
 		_initDefineProp(this, 'value', _descriptor, this);
 
 		_initDefineProp(this, 'config', _descriptor2, this);

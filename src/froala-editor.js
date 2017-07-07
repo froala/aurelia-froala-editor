@@ -1,11 +1,10 @@
 import {inject, customElement, bindable} from 'aurelia-framework';
 import {ObserverLocator} from "aurelia-binding";
-import {EventAggregator} from 'aurelia-event-aggregator';
 
 import {Config} from './froala-editor-config';
 
 @customElement('froala-editor')
-@inject(Element, Config, ObserverLocator, EventAggregator)
+@inject(Element, Config, ObserverLocator)
 export class FroalaEditor {
 	@bindable value;
 	@bindable config = {}
@@ -14,7 +13,7 @@ export class FroalaEditor {
 	element;
 	instance;
 
-	constructor (element, config, observerLocator, eventAggregator) {
+	constructor (element, config, observerLocator) {
     // Store element.
 		this.element = element;
 

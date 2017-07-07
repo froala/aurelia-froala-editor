@@ -11,8 +11,6 @@ var _aureliaFramework = require('aurelia-framework');
 
 var _aureliaBinding = require('aurelia-binding');
 
-var _aureliaEventAggregator = require('aurelia-event-aggregator');
-
 var _froalaEditorConfig = require('./froala-editor-config');
 
 function _initDefineProp(target, property, descriptor, context) {
@@ -60,8 +58,8 @@ function _initializerWarningHelper(descriptor, context) {
 	throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var FroalaEditor = exports.FroalaEditor = (_dec = (0, _aureliaFramework.customElement)('froala-editor'), _dec2 = (0, _aureliaFramework.inject)(Element, _froalaEditorConfig.Config, _aureliaBinding.ObserverLocator, _aureliaEventAggregator.EventAggregator), _dec(_class = _dec2(_class = (_class2 = function () {
-	function FroalaEditor(element, config, observerLocator, eventAggregator) {
+var FroalaEditor = exports.FroalaEditor = (_dec = (0, _aureliaFramework.customElement)('froala-editor'), _dec2 = (0, _aureliaFramework.inject)(Element, _froalaEditorConfig.Config, _aureliaBinding.ObserverLocator), _dec(_class = _dec2(_class = (_class2 = function () {
+	function FroalaEditor(element, config, observerLocator) {
 		var _this = this;
 
 		_classCallCheck(this, FroalaEditor);

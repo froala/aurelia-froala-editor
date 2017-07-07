@@ -285,6 +285,7 @@ jspm install -y
 
 ```bash
 jspm install aurelia-froala-editor
+jspm install npm:froala-editor -o "{format: 'global'}"
 ```
 
 - In your `src/main.js` or `src/main.ts` file add:
@@ -309,24 +310,6 @@ aurelia.use.plugin('aurelia-froala-editor');
 <require from="froala-editor/css/froala_style.min.css"></require>
 
 <froala-editor></froala-editor>
-```
-
-- In `package.json` file add the following overrides to the `jspm` entry:
-
-```json
-"overrides": {
-  "npm:froala-editor@^2.6.0": {
-    "main": "js/froala-editor.min",
-    "format": "global",
-    "shim": {
-      "js/froala-editor.min": {
-        "deps": [
-          "jquery"
-        ]
-      }
-    }
-  }
-}
 ```
 
 - In `build/bundles.js` add `aurelia-froala-editor` to `dist/aurelia` bundles:

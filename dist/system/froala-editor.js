@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['aurelia-framework', 'aurelia-binding', 'aurelia-event-aggregator', './froala-editor-config'], function (_export, _context) {
+System.register(['aurelia-framework', 'aurelia-binding', './froala-editor-config'], function (_export, _context) {
 	"use strict";
 
-	var inject, customElement, bindable, ObserverLocator, EventAggregator, Config, _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, FroalaEditor;
+	var inject, customElement, bindable, ObserverLocator, Config, _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, FroalaEditor;
 
 	function _initDefineProp(target, property, descriptor, context) {
 		if (!descriptor) return;
@@ -61,14 +61,12 @@ System.register(['aurelia-framework', 'aurelia-binding', 'aurelia-event-aggregat
 			bindable = _aureliaFramework.bindable;
 		}, function (_aureliaBinding) {
 			ObserverLocator = _aureliaBinding.ObserverLocator;
-		}, function (_aureliaEventAggregator) {
-			EventAggregator = _aureliaEventAggregator.EventAggregator;
 		}, function (_froalaEditorConfig) {
 			Config = _froalaEditorConfig.Config;
 		}],
 		execute: function () {
-			_export('FroalaEditor', FroalaEditor = (_dec = customElement('froala-editor'), _dec2 = inject(Element, Config, ObserverLocator, EventAggregator), _dec(_class = _dec2(_class = (_class2 = function () {
-				function FroalaEditor(element, config, observerLocator, eventAggregator) {
+			_export('FroalaEditor', FroalaEditor = (_dec = customElement('froala-editor'), _dec2 = inject(Element, Config, ObserverLocator), _dec(_class = _dec2(_class = (_class2 = function () {
+				function FroalaEditor(element, config, observerLocator) {
 					var _this = this;
 
 					_classCallCheck(this, FroalaEditor);
