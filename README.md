@@ -126,7 +126,31 @@ aurelia.use.plugin('aurelia-froala-editor');
 au generate task copy-assets
 ```
 
+- Open newly created `aurelia_project/tasks/copy-assets.js` file and make it look like this:
+
+```javascript
+import gulp from 'gulp';
+import project from '../aurelia.json';
+
+export default function copyAssets(done) {
+  let assets = project.paths.assets;
+
+  assets.forEach(item => {
+    gulp.src(item.src)
+        .pipe(gulp.dest(item.dest));
+    });
+
+  done();
+}
+```
+
 - Add Font Awesome paths to `aurelia_project/aurelia.json` file:
+
+```javascript
+au generate task copy-assets
+```
+
+- A
 
 ```javascript
 {
@@ -150,7 +174,7 @@ au generate task copy-assets
 #### Run aurelia-cli
 
 ```bash
-au start --watch
+au run --watch
 ```
 
 

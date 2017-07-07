@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', 'aurelia-binding', 'aurelia-i18n', 'aurelia-event-aggregator'], function (exports, _aureliaFramework, _aureliaBinding, _aureliaI18n, _aureliaEventAggregator) {
+define(['exports', 'aurelia-framework', 'aurelia-binding', 'aurelia-event-aggregator', './froala-editor-config'], function (exports, _aureliaFramework, _aureliaBinding, _aureliaEventAggregator, _froalaEditorConfig) {
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -55,11 +55,10 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', 'aurelia-i18n', 'aure
 		throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 	}
 
-	var _dec, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+	var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
 
-	(0, _aureliaFramework.customElement)('froala-editor');
-	var FroalaEditor = exports.FroalaEditor = (_dec = (0, _aureliaFramework.inject)(Element, _aureliaBinding.ObserverLocator, _aureliaI18n.I18N, _aureliaEventAggregator.EventAggregator), _dec(_class = (_class2 = function () {
-		function FroalaEditor(element, observerLocator, i18n, eventAggregator) {
+	var FroalaEditor = exports.FroalaEditor = (_dec = (0, _aureliaFramework.customElement)('froala-editor'), _dec2 = (0, _aureliaFramework.inject)(Element, _froalaEditorConfig.Config, _aureliaBinding.ObserverLocator, _aureliaEventAggregator.EventAggregator), _dec(_class = _dec2(_class = (_class2 = function () {
+		function FroalaEditor(element, config, observerLocator, eventAggregator) {
 			var _this = this;
 
 			_classCallCheck(this, FroalaEditor);
@@ -70,27 +69,18 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', 'aurelia-i18n', 'aure
 
 			_initDefineProp(this, 'eventHandlers', _descriptor3, this);
 
-			this.i18nInitialized = false;
-
 			this.element = element;
+
+			this.config = config.options();
+
 			this.subscriptions = [observerLocator.getObserver(this, 'value').subscribe(function (newValue, oldValue) {
 				if (_this.instance && _this.instance.froalaEditor('html.get') != newValue) {
 					_this.instance.froalaEditor('html.set', newValue);
-					_this.updateEmptyStatus();
 				}
 			})];
-			this.i18n = i18n;
-			eventAggregator.subscribe('i18n:locale:changed', function (payload) {
-				_this.processLanguageChanged();
-			});
 		}
 
-		FroalaEditor.prototype.processLanguageChanged = function processLanguageChanged() {
-			this.tearDownFroala();
-			this.setupFroala();
-		};
-
-		FroalaEditor.prototype.setupFroala = function setupFroala() {
+		FroalaEditor.prototype.tearUp = function tearUp() {
 			var _this2 = this;
 
 			this.instance = $(this.element.getElementsByTagName("div")[0]);
@@ -98,11 +88,9 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', 'aurelia-i18n', 'aure
 			if (this.instance.data('froala.editor')) {
 				return;
 			}
-			var c = {};
-			c.language = this.i18n.getLocale();
-			Object.assign(c, this.config);
-			this.instance.froalaEditor(c);
-			this.instance.froalaEditor('html.set', this.value);
+
+			this.instance.html(this.value);
+
 			if (this.eventHandlers && this.eventHandlers.length != 0) {
 				var _loop = function _loop(eventHandlerName) {
 					var handler = _this2.eventHandlers[eventHandlerName];
@@ -116,26 +104,27 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', 'aurelia-i18n', 'aure
 					_loop(eventHandlerName);
 				}
 			}
-			this.instance.on('froalaEditor.contentChanged', function (e, editor) {
+			this.instance.on('froalaEditor.contentChanged, froalaEditor.blur', function (e, editor) {
 				return _this2.value = editor.html.get();
 			});
+
+			this.instance.froalaEditor(Object.assign({}, this.config));
 		};
 
-		FroalaEditor.prototype.updateEmptyStatus = function updateEmptyStatus() {};
-
-		FroalaEditor.prototype.tearDownFroala = function tearDownFroala() {
+		FroalaEditor.prototype.tearDown = function tearDown() {
 			if (this.instance && this.instance.data('froala.editor')) {
 				this.instance.froalaEditor('destroy');
 			}
+
 			this.instance = null;
 		};
 
 		FroalaEditor.prototype.attached = function attached() {
-			this.setupFroala();
+			this.tearUp();
 		};
 
 		FroalaEditor.prototype.detached = function detached() {
-			this.tearDownFroala();
+			this.tearDown();
 		};
 
 		return FroalaEditor;
@@ -152,5 +141,5 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', 'aurelia-i18n', 'aure
 		initializer: function initializer() {
 			return {};
 		}
-	})), _class2)) || _class);
+	})), _class2)) || _class) || _class);
 });

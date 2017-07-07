@@ -1,6 +1,4 @@
-'use strict';
-
-var _dec, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
 
 function _initDefineProp(target, property, descriptor, context) {
 	if (!descriptor) return;
@@ -45,53 +43,41 @@ function _initializerWarningHelper(descriptor, context) {
 	throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-import { customElement, bindable, inject } from 'aurelia-framework';
+import { inject, customElement, bindable } from 'aurelia-framework';
 import { ObserverLocator } from "aurelia-binding";
-import { I18N } from "aurelia-i18n";
 import { EventAggregator } from 'aurelia-event-aggregator';
 
-customElement('froala-editor');
+import { Config } from './froala-editor-config';
 
-export let FroalaEditor = (_dec = inject(Element, ObserverLocator, I18N, EventAggregator), _dec(_class = (_class2 = class FroalaEditor {
+export let FroalaEditor = (_dec = customElement('froala-editor'), _dec2 = inject(Element, Config, ObserverLocator, EventAggregator), _dec(_class = _dec2(_class = (_class2 = class FroalaEditor {
 
-	constructor(element, observerLocator, i18n, eventAggregator) {
+	constructor(element, config, observerLocator, eventAggregator) {
 		_initDefineProp(this, 'value', _descriptor, this);
 
 		_initDefineProp(this, 'config', _descriptor2, this);
 
 		_initDefineProp(this, 'eventHandlers', _descriptor3, this);
 
-		this.i18nInitialized = false;
-
 		this.element = element;
+
+		this.config = config.options();
+
 		this.subscriptions = [observerLocator.getObserver(this, 'value').subscribe((newValue, oldValue) => {
 			if (this.instance && this.instance.froalaEditor('html.get') != newValue) {
 				this.instance.froalaEditor('html.set', newValue);
-				this.updateEmptyStatus();
 			}
 		})];
-		this.i18n = i18n;
-		eventAggregator.subscribe('i18n:locale:changed', payload => {
-			this.processLanguageChanged();
-		});
 	}
 
-	processLanguageChanged() {
-		this.tearDownFroala();
-		this.setupFroala();
-	}
-
-	setupFroala() {
+	tearUp() {
 		this.instance = $(this.element.getElementsByTagName("div")[0]);
 
 		if (this.instance.data('froala.editor')) {
 			return;
 		}
-		let c = {};
-		c.language = this.i18n.getLocale();
-		Object.assign(c, this.config);
-		this.instance.froalaEditor(c);
-		this.instance.froalaEditor('html.set', this.value);
+
+		this.instance.html(this.value);
+
 		if (this.eventHandlers && this.eventHandlers.length != 0) {
 			for (let eventHandlerName in this.eventHandlers) {
 				let handler = this.eventHandlers[eventHandlerName];
@@ -101,24 +87,25 @@ export let FroalaEditor = (_dec = inject(Element, ObserverLocator, I18N, EventAg
 				});
 			}
 		}
-		this.instance.on('froalaEditor.contentChanged', (e, editor) => this.value = editor.html.get());
+		this.instance.on('froalaEditor.contentChanged, froalaEditor.blur', (e, editor) => this.value = editor.html.get());
+
+		this.instance.froalaEditor(Object.assign({}, this.config));
 	}
 
-	updateEmptyStatus() {}
-
-	tearDownFroala() {
+	tearDown() {
 		if (this.instance && this.instance.data('froala.editor')) {
 			this.instance.froalaEditor('destroy');
 		}
+
 		this.instance = null;
 	}
 
 	attached() {
-		this.setupFroala();
+		this.tearUp();
 	}
 
 	detached() {
-		this.tearDownFroala();
+		this.tearDown();
 	}
 }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'value', [bindable], {
 	enumerable: true,
@@ -133,4 +120,4 @@ export let FroalaEditor = (_dec = inject(Element, ObserverLocator, I18N, EventAg
 	initializer: function () {
 		return {};
 	}
-})), _class2)) || _class);
+})), _class2)) || _class) || _class);
