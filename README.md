@@ -203,6 +203,12 @@ au run --watch
 
 To configure your project with Webpack, follow the resources from Aurelia Docs: http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/setup-webpack/2 .
 
+```bash
+git clone git@github.com:aurelia/skeleton-navigation.git
+cd skeleton-navigation/skeleton-esnext-webpack
+npm install
+```
+
 #### Add aurelia-froala-editor
 
 - Install the aurelia plugin
@@ -237,6 +243,8 @@ aurelia.use.plugin(PLATFORM.moduleName('aurelia-froala-editor'));
 - In `webpack.config.js` file include the Aurelia Froala Editor plugin:
 
 ```js
+const { AureliaPlugin, ModuleDependenciesPlugin } = require('aurelia-webpack-plugin');
+
 plugins: [
   new AureliaPlugin(),
   new ModuleDependenciesPlugin({
@@ -261,6 +269,15 @@ npm run start
 To configure your project with JSPM, follow the resources from Aurelia Docs: http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/setup-jspm/1 .
 
 
+
+```bash
+git clone git@github.com:aurelia/skeleton-navigation.git
+cd skeleton-navigation/skeleton-esnext
+npm install
+jspm install -y
+```
+
+#### 
 
 #### Add aurelia-froala-editor
 

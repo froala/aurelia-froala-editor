@@ -1,6 +1,6 @@
 {
   "name": "aurelia-froala-editor",
-  "version": "2.7.1",
+  "version": "2.7.2",
   "description": "Aurelia plugin for Froala WYSIWYG HTML rich text editor.",
   "keywords": [
     "aurelia",
@@ -68,8 +68,8 @@
     },
     "dependencies": {
       "aurelia-polyfills": "^1.0.0",
-      "jquery": "npm:jquery",
-      "font-awesome": "npm:font-awesome",
+      "jquery": "npm:jquery^1.11.0",
+      "font-awesome": "npm:font-awesome^4.4.0",
       "froala-editor": "npm:froala-editor^2.6.0",
       "aurelia-binding": "npm:aurelia-binding@^1.0.0",
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@^1.0.0"
