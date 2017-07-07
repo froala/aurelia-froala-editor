@@ -1,6 +1,6 @@
 {
   "name": "aurelia-froala-editor",
-  "version": "2.7.2-3",
+  "version": "2.7.2_3",
   "description": "Aurelia plugin for Froala WYSIWYG HTML rich text editor.",
   "keywords": [
     "aurelia",
@@ -62,17 +62,20 @@
     "aurelia-dependency-injection": "^1.0.0"
   },
   "jspm": {
-    "jspmNodeConversion": false,
     "main": "index",
     "directories": {
       "lib": "dist/system"
     },
     "dependencies": {
-      "aurelia-polyfills": "^1.0.0",
-      "froala-editor": "^2.6.0",
-      "aurelia-binding": "^1.0.0",
-      "aurelia-dependency-injection": "^1.0.0",
-      "css": "github:systemjs/plugin-css"
+      "aurelia-binding": "npm:aurelia-binding@^1.2.1",
+      "aurelia-templating-resources": "npm:aurelia-templating-resources@^1.4.0",
+      "froala-editor": "npm:froala-editor@^2.6.2",
+      "systemjs/plugin-css": "github:systemjs/plugin-css@^0.1.35"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
     }
   }
 }
