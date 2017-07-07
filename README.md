@@ -2,6 +2,16 @@
 
 >This package provides a custom element for the [Froala editor](https://www.froala.com/wysiwyg-editor) in [Aurelia](http://aurelia.io/).
 
+## Table of contents
+
+1. [Installation instructions](https://github.com/froala/angular-froala-wysiwyg#installation-instructions)
+2. [Integration](#integration)
+   1. [With Aurelia CLI](#with-angular-cli)
+   2. [With Webpack](#with-webpack)
+   3. [With JSPM](#with-jspm)
+3. [Usage](#usage)
+4. [License](https://github.com/froala/angular-froala-wysiwyg#license)
+
 ## Installation instructions
 
 Install `aurelia-froala-editor` from `npm`
@@ -182,7 +192,7 @@ aurelia.use.plugin(PLATFORM.moduleName('aurelia-froala-editor'));
 
 - In `webpack.config.js` file include the Aurelia Froala Editor plugin:
 
-```json
+```js
 plugins: [
   new AureliaPlugin(),
   new ModuleDependenciesPlugin({
@@ -316,7 +326,9 @@ gulp watch
 
 
 
-- ### Usage
+## Usage
+
+#### Component
 
 In an Aurelia template, just use the aurelia-froala custom element to instantiate an editor.
 
@@ -324,7 +336,7 @@ In an Aurelia template, just use the aurelia-froala custom element to instantiat
 <froala-editor></froala-editor>
 ```
 
-### Options
+#### Options
 All [configuration options](https://www.froala.com/wysiwyg-editor/docs/options) can be set via the config attribute.
 
 ```html
@@ -351,7 +363,7 @@ aurelia.use.plugin('aurelia-froala-editor', config => {
 });
 ```
 
-### Events
+#### Events
 
 All the [event handlers](https://www.froala.com/wysiwyg-editor/docs/events) are also available:
 
