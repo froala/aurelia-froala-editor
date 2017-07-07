@@ -338,7 +338,7 @@ module.exports = {
     "dist/aurelia": {
       "includes": [
         ...
-        "froala/aurelia-froala-editor",
+        "aurelia-froala-editor",
         ...
       ],
       "options": {
@@ -348,33 +348,6 @@ module.exports = {
         "rev": false
       }
     }
-  }
-}
-```
-
-- Create a task to copy Font Awesome fonts:
-
-```javascript
-au generate task copy-assets
-```
-
-- Add Font Awesome paths to `aurelia_project/aurelia.json` file:
-
-```javascript
-{
-  "paths": {
-    "root": "src",
-    "resources": "resources",
-    "elements": "resources/elements",
-    "attributes": "resources/attributes",
-    "valueConverters": "resources/value-converters",
-    "bindingBehaviors": "resources/binding-behaviors",
-    "assets": [
-      {
-        "src": "./node_modules/font-awesome/fonts/**/*.*",
-        "dest": "./fonts"
-      }
-    ]
   }
 }
 ```
