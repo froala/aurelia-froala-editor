@@ -105,9 +105,19 @@ aurelia.use.plugin('aurelia-froala-editor');
   "path": "../node_modules/font-awesome/css",
   "main": "font-awesome.css"
 },
+"jquery",
 {
-  "name": "aurelia-froala-wysiwyg",
-  "path": "../node_modules/aurelia-froala-wysiwyg/dist/amd",
+  "name": "froala-editor",
+  "path": "../node_modules/froala-editor",
+  "main": "js/froala_editor.min",
+  "resources": [
+    "./js/**/*.{js}",
+    "./css/**/*.{css}"
+  ]
+},
+{
+  "name": "aurelia-froala-editor",
+  "path": "../node_modules/aurelia-froala-editor/dist/amd",
   "main": "index",
   "resources": [
     "froala-editor.js",
@@ -115,6 +125,7 @@ aurelia.use.plugin('aurelia-froala-editor');
   ],
   "deps": [
     "jquery",
+    "froala-editor",
     "font-awesome"
   ]
 }
@@ -144,13 +155,22 @@ export default function copyAssets(done) {
 }
 ```
 
-- Add Font Awesome paths to `aurelia_project/aurelia.json` file:
+- Open `aurelia-project/tasks/build.js` file and modify it to look like this:
 
 ```javascript
-au generate task copy-assets
+import copyAssets from './copy-assets';
+
+let build = gulp.series(
+  readProjectConfiguration,
+  gulp.parallel(
+    ... 
+    copyAssets // Add this.
+  ),
+  writeBundles
+);
 ```
 
-- A
+- Add Font Awesome paths to `aurelia_project/aurelia.json` file:
 
 ```javascript
 {
@@ -181,7 +201,7 @@ au run --watch
 
 ### With Webpack
 
-To configure your project with Webpack, follow the resources from Aurelia Docs: http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/setup-webpack/2 . 
+To configure your project with Webpack, follow the resources from Aurelia Docs: http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/setup-webpack/2 .
 
 #### Add aurelia-froala-editor
 
@@ -220,7 +240,7 @@ aurelia.use.plugin(PLATFORM.moduleName('aurelia-froala-editor'));
 plugins: [
   new AureliaPlugin(),
   new ModuleDependenciesPlugin({
-    "aurelia-froala-wysiwyg": [ './froala-editor' ],
+    "aurelia-froala-editor": [ './froala-editor' ],
     "parent-module": [ "child-module" ],
   }),
 ]
@@ -240,14 +260,14 @@ npm run start
 
 To configure your project with JSPM, follow the resources from Aurelia Docs: http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/setup-jspm/1 .
 
- 
+
 
 #### Add aurelia-froala-editor
 
 - Install the aurelia plugin
 
 ```bash
-jspm install aurelia-froala-editor 
+jspm install aurelia-froala-editor
 ```
 
 - In your `src/main.js` or `src/main.ts` file add:
@@ -300,8 +320,8 @@ module.exports = {
     ...
     "dist/aurelia": {
       "includes": [
-        ... 
-        "froala/aurelia-froala-wysiwyg",
+        ...
+        "froala/aurelia-froala-editor",
         ...
       ],
       "options": {
@@ -364,7 +384,7 @@ In an Aurelia template, just use the aurelia-froala custom element to instantiat
 All [configuration options](https://www.froala.com/wysiwyg-editor/docs/options) can be set via the config attribute.
 
 ```html
-<froala-editor 
+<froala-editor
 	value.two-way="value"
 	config.bind="{
 		toolbarButtons: ['redo' , '|', 'fontFamily', '|', 'fontSize', '|', 'paragraphFormat', 'color', '|', 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', 'outdent', 'indent', 'clearFormatting', 'insertTable', 'html'],
@@ -392,7 +412,7 @@ aurelia.use.plugin('aurelia-froala-editor', config => {
 All the [event handlers](https://www.froala.com/wysiwyg-editor/docs/events) are also available:
 
 ```html
-<froala-editor 
+<froala-editor
 	value.two-way="value"
   	event-handlers.bind = "{
     	'paste.afterCleanup': processPaste
