@@ -8,7 +8,8 @@
 2. [Integration](#integration)
    1. [With Aurelia CLI](#with-aurelia-cli)
    2. [With Webpack](#with-webpack)
-   3. [With JSPM](#with-jspm)
+   3. [With Webpack](#with-easy-webpack)
+   4. [With JSPM](#with-jspm)
 3. [Usage](#usage)
 4. [License](#license)
 
@@ -252,6 +253,68 @@ plugins: [
     "parent-module": [ "child-module" ],
   }),
 ]
+```
+
+#### Run application
+
+```bash
+npm run start
+```
+
+
+
+### With Easy Webpack
+
+To configure your project with Easy Webpack, follow the resources from Aurelia Docs: http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/setup-webpack/2 .
+
+```bash
+git clone git@github.com:aurelia/skeleton-navigation.git
+cd skeleton-navigation/skeleton-esnext-webpack
+git reset --hard 8997a6f87339a2702f77aeaab7ede5bffe94437f
+npm install
+```
+
+#### Add aurelia-froala-editor
+
+- Install the aurelia plugin
+
+```bash
+npm install aurelia-froala-editor --save
+```
+
+- In your `src/main.js` or `src/main.ts` file add:
+
+```javascript
+import { PLATFORM } from "aurelia-pal";
+
+// Editor files.
+import "froala-editor/js/froala_editor.pkgd.min";
+
+...
+
+// Use the aurelia-froala-editor plugin.
+aurelia.use.plugin(PLATFORM.moduleName('aurelia-froala-editor'));
+```
+
+- In your `src/app.html` include CSS files and Froala Editor component:
+
+```html
+<require from="froala-editor/css/froala_editor.pkgd.min.css"></require>
+<require from="froala-editor/css/froala_style.min.css"></require>
+
+<froala-editor></froala-editor>
+```
+
+- In `package.json` file include the Aurelia Froala Editor plugin:
+
+```json
+"aurelia": {
+  "build": {
+    "resources": [
+      "aurelia-froala-editor/froala-editor"
+    ]
+  }
+}
 ```
 
 #### Run application
