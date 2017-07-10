@@ -8,7 +8,7 @@
 2. [Integration](#integration)
    1. [With Aurelia CLI](#with-aurelia-cli)
    2. [With Webpack](#with-webpack)
-   3. [With Webpack](#with-easy-webpack)
+   3. [With Easy Webpack](#with-easy-webpack)
    4. [With JSPM](#with-jspm)
 3. [Usage](#usage)
 4. [License](#license)
