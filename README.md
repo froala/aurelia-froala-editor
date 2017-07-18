@@ -1,6 +1,10 @@
-# aurelia-froala-editor
+# Aurelia Froala WYSIWYG HTML Editor
 
->This package provides a custom element for the [Froala editor](https://www.froala.com/wysiwyg-editor) in [Aurelia](http://aurelia.io/).
+[![npm](https://img.shields.io/npm/v/aurelia-froala-editor.svg)](https://www.npmjs.com/package/aurelia-froala-editor)
+[![npm](https://img.shields.io/npm/dm/aurelia-froala-editor.svg)](https://www.npmjs.com/package/aurelia-froala-editor)
+[![npm](https://img.shields.io/npm/l/aurelia-froala-editor.svg)](https://www.npmjs.com/package/aurelia-froala-editor)
+
+>This package provides a custom element for the [Froala WYSIWYG HTML Editor](https://www.froala.com/wysiwyg-editor) in [Aurelia](http://aurelia.io/).
 
 ## Table of contents
 
