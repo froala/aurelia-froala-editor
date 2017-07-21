@@ -23,7 +23,7 @@
 Install `aurelia-froala-editor` from `npm`
 
 ```bash
-npm install angular-froala-editor --save
+npm install aurelia-froala-editor --save
 ```
 
 ## Update editor instructions
