@@ -29,7 +29,7 @@ npm install aurelia-froala-editor --save
 ## Update editor instructions
 
 ```bash
-npm update froala-editor --save
+npm update froala-editor
 ```
 
 ## Integration
