@@ -5,13 +5,14 @@
 ## Table of contents
 
 1. [Installation instructions](#installation-instructions)
-2. [Integration](#integration)
+2. [Update editor instructions](#update-editor-instructions)
+3. [Integration](#integration)
    1. [With Aurelia CLI](#with-aurelia-cli)
    2. [With Webpack](#with-webpack)
    3. [With Easy Webpack](#with-easy-webpack)
    4. [With JSPM](#with-jspm)
-3. [Usage](#usage)
-4. [License](#license)
+4. [Usage](#usage)
+5. [License](#license)
 
 ## Installation instructions
 
@@ -19,6 +20,12 @@ Install `aurelia-froala-editor` from `npm`
 
 ```bash
 npm install angular-froala-editor --save
+```
+
+## Update editor instructions
+
+```bash
+npm update froala-editor --save
 ```
 
 ## Integration
@@ -164,7 +171,7 @@ import copyAssets from './copy-assets';
 let build = gulp.series(
   readProjectConfiguration,
   gulp.parallel(
-    ... 
+    ...
     copyAssets // Add this.
   ),
   writeBundles
@@ -340,7 +347,7 @@ npm install
 jspm install -y
 ```
 
-#### 
+####
 
 #### Add aurelia-froala-editor
 
