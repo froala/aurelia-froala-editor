@@ -1,6 +1,6 @@
 {
   "name": "aurelia-froala-editor",
-  "version": "2.7.3",
+  "version": "2.7.4",
   "description": "Aurelia plugin for Froala WYSIWYG HTML rich text editor.",
   "keywords": [
     "aurelia",
@@ -57,7 +57,7 @@
     "yargs": "^7.0.2"
   },
   "dependencies": {
-    "froala-editor": "^2.6.0",
+    "froala-editor": "^2.7.4",
     "aurelia-binding": "^1.0.0",
     "aurelia-dependency-injection": "^1.0.0"
   },
