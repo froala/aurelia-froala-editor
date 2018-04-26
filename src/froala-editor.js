@@ -56,7 +56,7 @@ export class FroalaEditor {
 
 			}
 		}
-		this.instance.on('froalaEditor.contentChanged, froalaEditor.blur', (e, editor) => this.value = editor.html.get());
+		this.instance.on('froalaEditor.contentChanged froalaEditor.blur', (e, editor) => this.value = editor.html.get());
 
     // Initialize editor.
 		this.instance.froalaEditor(Object.assign({}, this.config));
