@@ -35,7 +35,12 @@ export class FroalaEditor {
   // Starting poing.
 	tearUp () {
     // Get element.
-		this.instance =	$(this.element.getElementsByTagName("div")[0]);
+        if (this.config.iframe) {
+            this.instance = $(this.element.getElementsByTagName('textarea')[0]);
+        }
+        else {
+            this.instance = $(this.element.getElementsByTagName('div')[0]);
+        }
 
     // Check if editor isn't already initialized.
 		if (this.instance.data('froala.editor')) {
