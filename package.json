@@ -42,7 +42,7 @@
     "gulp-eslint": "^3.0.1",
     "gulp-yuidoc": "^0.1.2",
     "isparta": "^4.0.0",
-    "istanbul": "^1.0.0-alpha.2",
+    "istanbul": "^1.1.0-alpha.1",
     "jasmine-core": "^2.5.2",
     "karma": "^3.0.0",
     "karma-babel-preprocessor": "^7.0.0",
