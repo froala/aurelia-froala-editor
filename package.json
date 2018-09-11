@@ -57,9 +57,9 @@
     "yargs": "^7.0.2"
   },
   "dependencies": {
-    "froala-editor": "2.8.4",
-    "aurelia-binding": "^1.0.0",
-    "aurelia-dependency-injection": "^1.0.0"
+    "aurelia-binding": "^2.1.4",
+    "aurelia-framework": "^1.3.0",
+    "froala-editor": "2.8.4"
   },
   "jspm": {
     "jspmNodeConversion": false,
