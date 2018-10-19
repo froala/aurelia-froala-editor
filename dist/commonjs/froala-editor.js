@@ -105,7 +105,7 @@ var FroalaEditor = exports.FroalaEditor = (_dec = (0, _aureliaFramework.customEl
 				_loop(eventHandlerName);
 			}
 		}
-		this.instance.on('froalaEditor.contentChanged, froalaEditor.blur', function (e, editor) {
+		this.instance.on('froalaEditor.contentChanged froalaEditor.blur', function (e, editor) {
 			return _this2.value = editor.html.get();
 		});
 
