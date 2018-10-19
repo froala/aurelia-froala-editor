@@ -104,7 +104,7 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', './froala-editor-conf
 					_loop(eventHandlerName);
 				}
 			}
-			this.instance.on('froalaEditor.contentChanged, froalaEditor.blur', function (e, editor) {
+			this.instance.on('froalaEditor.contentChanged froalaEditor.blur', function (e, editor) {
 				return _this2.value = editor.html.get();
 			});
 
