@@ -300,10 +300,6 @@ jspm install npm:froala-editor -o "{format: 'global'}"
 - In your `src/main.js` or `src/main.ts` file add:
 
 ```javascript
-// Import Editor.
-import * as froala from 'froala-editor/js/froala_editor.pkgd.min.js';
-
-...
 
 // Use the aurelia-froala-editor plugin.
 aurelia.use.plugin('aurelia-froala-editor');
