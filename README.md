@@ -57,7 +57,6 @@ npm install aurelia-froala-editor --save
 
 
 ```javascript
-...
 
 // Use the aurelia-froala-editor plugin.
 aurelia.use.plugin('aurelia-froala-editor');
@@ -74,18 +73,6 @@ aurelia.use.plugin('aurelia-froala-editor');
 ```
 
 - In `aurelia_project/aurelia.json` file set the builder loader plugins stub to `false`
-
-```javascript
-// Editor files.
-import "froala-editor/js/froala_editor.pkgd.min";
-
-...
-
-// Use the aurelia-froala-editor plugin.
-aurelia.use.plugin('aurelia-froala-editor');
-```
-
-- ​
 
 ```json
 "loader": {
@@ -105,67 +92,38 @@ aurelia.use.plugin('aurelia-froala-editor');
 }
 ```
 
-- In `aurelia_project/aurelia.json` add to `vendor_bundle`
+- In `aurelia_project/aurelia.json` add to `vendor_bundle` dependencies
 
 ```javascript
 {
-  "name": "font-awesome",
-  "path": "../node_modules/font-awesome/css",
-  "main": "font-awesome.css"
-},
-
-{
-  "name": "aurelia-froala-editor",
-  "path": "../node_modules/aurelia-froala-editor/dist/amd",
-  "main": "index",
-  "resources": [
-    "froala-editor.js",
-    "froala-editor.html"
-  ],
-  "deps": [
-    "froala-editor",
-    "font-awesome"
-  ]
-}
-```
-
-- Create a task to copy Font Awesome fonts:
-
-```javascript
-au generate task copy-assets
-```
-
-- Open newly created `aurelia_project/tasks/copy-assets.js` file and make it look like this:
-
-```javascript
-import gulp from 'gulp';
-import project from '../aurelia.json';
-
-export default function copyAssets(done) {
-  let assets = project.paths.assets;
-
-  assets.forEach(item => {
-    gulp.src(item.src)
-        .pipe(gulp.dest(item.dest));
-    });
-
-  done();
-}
-```
-
-- Open `aurelia-project/tasks/build.js` file and modify it to look like this:
-
-```javascript
-import copyAssets from './copy-assets';
-
-let build = gulp.series(
-  readProjectConfiguration,
-  gulp.parallel(
-    ...
-    copyAssets // Add this.
-  ),
-  writeBundles
-);
+            "name": "font-awesome",
+            "path": "../node_modules/font-awesome/css",
+            "main": "font-awesome.css"
+          },
+         
+          {
+            "name": "froala-editor",
+            "path": "../node_modules/froala-editor",
+            "main": "js/froala_editor.pkgd.min.js",
+            "resources": [
+              "./js/**/*.{js}",
+              "./css/froala_editor.pkgd.min.css",
+              "./css/froala_style.min.css"
+            ]
+          },
+          {
+            "name": "aurelia-froala-editor",
+            "path": "../node_modules/aurelia-froala-editor/dist/amd",
+            "main": "index",
+            "resources": [
+              "froala-editor.js",
+              "froala-editor.html"
+            ],
+            "deps": [
+              "froala-editor"
+              
+            ]
+          }
 ```
 
 - Add Font Awesome paths to `aurelia_project/aurelia.json` file:
@@ -219,10 +177,6 @@ npm install aurelia-froala-editor --save
 
 ```javascript
 import { PLATFORM } from "aurelia-pal";
-
-// Editor files.
-import "froala-editor/js/froala_editor.pkgd.min";
-
 ...
 
 // Use the aurelia-froala-editor plugin.
@@ -242,6 +196,7 @@ aurelia.use.plugin(PLATFORM.moduleName('aurelia-froala-editor'));
 
 ```js
 const { AureliaPlugin, ModuleDependenciesPlugin } = require('aurelia-webpack-plugin');
+
   resolve: {
     extensions: ['.js'],
     modules:[srcDir,'../node_modules/froala-editor/js','node_modules'],
