@@ -65,11 +65,16 @@ aurelia.use.plugin('aurelia-froala-editor');
 - In your `src/app.html` include CSS files and Froala Editor component:
 
 ```html
-<require from="font-awesome.css"></require>
-<require from="froala-editor/css/froala_editor.pkgd.min.css"></require>
+<template>
+  <require from="bootstrap/dist/css/bootstrap.min.css"></require>
+  <require from="../node_modules/font-awesome/css/font-awesome.min.css"> </require>
+  <require from="froala-editor/css/froala_editor.pkgd.min.css"></require>
 <require from="froala-editor/css/froala_style.min.css"></require>
+  <require from="./styles.css"></require>
 
-<froala-editor id="edit"></froala-editor>
+  <froala-editor id="edit"></froala-editor>
+</template>
+
 ```
 
 - In `aurelia_project/aurelia.json` file set the builder loader plugins stub to `false`
@@ -95,7 +100,7 @@ aurelia.use.plugin('aurelia-froala-editor');
 - In `aurelia_project/aurelia.json` add to `vendor_bundle` dependencies
 
 ```javascript
-{
+          {
             "name": "font-awesome",
             "path": "../node_modules/font-awesome/css",
             "main": "font-awesome.css"
@@ -126,34 +131,11 @@ aurelia.use.plugin('aurelia-froala-editor');
           }
 ```
 
-- Add Font Awesome paths to `aurelia_project/aurelia.json` file:
-
-```javascript
-{
-  "paths": {
-    "root": "src",
-    "resources": "resources",
-    "elements": "resources/elements",
-    "attributes": "resources/attributes",
-    "valueConverters": "resources/value-converters",
-    "bindingBehaviors": "resources/binding-behaviors",
-    "assets": [
-      {
-        "src": "./node_modules/font-awesome/fonts/**/*.*",
-        "dest": "./fonts"
-      }
-    ]
-  }
-}
-```
-
 #### Run aurelia-cli
 
 ```bash
 au run --watch
 ```
-
-
 
 ### With Webpack
 
