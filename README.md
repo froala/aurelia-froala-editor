@@ -79,18 +79,6 @@ aurelia.use.plugin('aurelia-froala-editor');
 
 - In `aurelia_project/aurelia.json` file set the builder loader plugins stub to `false`
 
-```javascript
-// Editor files.
-import "froala-editor/js/froala_editor.pkgd.min";
-
-...
-
-// Use the aurelia-froala-editor plugin.
-aurelia.use.plugin('aurelia-froala-editor');
-```
-
-- ​
-
 ```json
 "loader": {
   "type": "require",
@@ -109,7 +97,7 @@ aurelia.use.plugin('aurelia-froala-editor');
 }
 ```
 
-- In `aurelia_project/aurelia.json` add to `vendor_bundle`
+- In `aurelia_project/aurelia.json` add to `vendor_bundle` **froala-editor** and **aurelia-froala-editor** 
 
 ```javascript
 {
@@ -124,7 +112,8 @@ aurelia.use.plugin('aurelia-froala-editor');
   "main": "js/froala_editor.min",
   "resources": [
     "./js/**/*.{js}",
-    "./css/**/*.{css}"
+    "./css/froala_editor.pkgd.min.css",
+    "./css/froala_style.min.css"
   ]
 },
 {
