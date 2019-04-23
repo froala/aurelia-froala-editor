@@ -46,7 +46,6 @@ au new my-app
 Create a custom app by selecting the options as given below 
 ```
 Custom App
-Webpack
 Cli Built in Bundler With An Amd Module Loader
 RequireJS
 Web
