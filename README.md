@@ -72,7 +72,7 @@ aurelia.use.plugin('aurelia-froala-editor');
 <require from="froala-editor/css/froala_style.min.css"></require>
   <require from="./styles.css"></require>
 
-  <froala-editor id="edit"></froala-editor>
+  <froala-editor></froala-editor>
 </template>
 
 ```
@@ -171,7 +171,7 @@ aurelia.use.plugin(PLATFORM.moduleName('aurelia-froala-editor'));
 <require from="froala-editor/css/froala_editor.pkgd.min.css"></require>
 <require from="froala-editor/css/froala_style.min.css"></require>
 
-<froala-editor id="edit"></froala-editor>
+<froala-editor></froala-editor>
 ```
 
 - In `webpack.config.js` file include the Aurelia Froala Editor plugin:
@@ -248,7 +248,7 @@ aurelia.use.plugin('aurelia-froala-editor');
 <require from="froala-editor/css/froala_editor.pkgd.min.css"></require>
 <require from="froala-editor/css/froala_style.min.css"></require>
 
-<froala-editor id="edit"></froala-editor>
+<froala-editor></froala-editor>
 ```
 
 - In `build/bundles.js` add `aurelia-froala-editor` to `dist/aurelia` bundles:

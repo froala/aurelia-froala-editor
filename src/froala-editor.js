@@ -66,9 +66,9 @@ export class FroalaEditor1 {
 		}
 		this.instance.addEventListener('contentChanged', (e, editor) => this.value = editor.html.get());
 		this.instance.addEventListener('blur', (e, editor) => this.value = editor.html.get())
-
+		
     // Initialize editor.
-		this.instance = new FroalaEditor(`#${this.element.id}`, Object.assign({}, this.config));
+		this.instance = new FroalaEditor(`#${this.instance.id}`, Object.assign({}, this.config));
 	}
 
   // Destroy.
