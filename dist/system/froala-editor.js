@@ -125,6 +125,7 @@ System.register(['aurelia-framework', 'aurelia-binding', './froala-editor-config
 						return _this2.value = editor.html.get();
 					});
 
+					this.instance.id = 'froala_editor_' + new Date().getTime();
 					this.instance = new FroalaEditor('#' + this.instance.id, Object.assign({}, this.config));
 				};
 

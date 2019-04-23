@@ -122,6 +122,7 @@ var FroalaEditor1 = exports.FroalaEditor1 = (_dec = (0, _aureliaFramework.custom
 			return _this2.value = editor.html.get();
 		});
 
+		this.instance.id = 'froala_editor_' + new Date().getTime();
 		this.instance = new _froala_editorPkgdMin2.default('#' + this.instance.id, Object.assign({}, this.config));
 	};
 

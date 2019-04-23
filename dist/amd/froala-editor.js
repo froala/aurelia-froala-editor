@@ -123,6 +123,7 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', './froala-editor-conf
 				return _this2.value = editor.html.get();
 			});
 
+			this.instance.id = 'froala_editor_' + new Date().getTime();
 			this.instance = new _froala_editorPkgdMin2.default('#' + this.instance.id, Object.assign({}, this.config));
 		};
 
