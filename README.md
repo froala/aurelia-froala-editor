@@ -42,6 +42,19 @@ npm update froala-editor
 ```bash
 npm install aurelia-cli -g
 au new my-app
+```
+Create a custom app by selecting the options as given below 
+```
+Custom App
+Webpack
+Cli Built in Bundler With An Amd Module Loader
+RequireJS
+Web
+Babel
+Navigation App
+```
+Then navigate into your newly created project
+```
 cd my-app
 ```
 
