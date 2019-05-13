@@ -66,7 +66,6 @@ aurelia.use.plugin('aurelia-froala-editor');
 - In your `src/app.html` include CSS files and Froala Editor component:
 
 ```html
-<require from="font-awesome.css"></require>
 <require from="froala-editor/css/froala_editor.pkgd.min.css"></require>
 <require from="froala-editor/css/froala_style.min.css"></require>
 
@@ -109,12 +108,6 @@ aurelia.use.plugin('aurelia-froala-editor');
 
 ```javascript
 {
-  "name": "font-awesome",
-  "path": "../node_modules/font-awesome/css",
-  "main": "font-awesome.css"
-},
-
-{
   "name": "aurelia-froala-editor",
   "path": "../node_modules/aurelia-froala-editor/dist/amd",
   "main": "index",
@@ -123,16 +116,9 @@ aurelia.use.plugin('aurelia-froala-editor');
     "froala-editor.html"
   ],
   "deps": [
-    "froala-editor",
-    "font-awesome"
+    "froala-editor"
   ]
 }
-```
-
-- Create a task to copy Font Awesome fonts:
-
-```javascript
-au generate task copy-assets
 ```
 
 - Open newly created `aurelia_project/tasks/copy-assets.js` file and make it look like this:
@@ -166,27 +152,6 @@ let build = gulp.series(
   ),
   writeBundles
 );
-```
-
-- Add Font Awesome paths to `aurelia_project/aurelia.json` file:
-
-```javascript
-{
-  "paths": {
-    "root": "src",
-    "resources": "resources",
-    "elements": "resources/elements",
-    "attributes": "resources/attributes",
-    "valueConverters": "resources/value-converters",
-    "bindingBehaviors": "resources/binding-behaviors",
-    "assets": [
-      {
-        "src": "./node_modules/font-awesome/fonts/**/*.*",
-        "dest": "./fonts"
-      }
-    ]
-  }
-}
 ```
 
 #### Run aurelia-cli
