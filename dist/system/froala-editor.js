@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-framework', 'aurelia-binding', './froala-editor-config', 'froala-editor/js/froala_editor.pkgd.min.js'], function (_export, _context) {
+System.register(['aurelia-framework', 'aurelia-binding', './froala-editor-config', 'froala-editor/js/froala_editor.min.js'], function (_export, _context) {
 	"use strict";
 
 	var inject, customElement, bindable, ObserverLocator, Config, FroalaEditor, _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, FroalaEditor1;
@@ -63,8 +63,8 @@ System.register(['aurelia-framework', 'aurelia-binding', './froala-editor-config
 			ObserverLocator = _aureliaBinding.ObserverLocator;
 		}, function (_froalaEditorConfig) {
 			Config = _froalaEditorConfig.Config;
-		}, function (_froalaEditorJsFroala_editorPkgdMinJs) {
-			FroalaEditor = _froalaEditorJsFroala_editorPkgdMinJs.default;
+		}, function (_froalaEditorJsFroala_editorMinJs) {
+			FroalaEditor = _froalaEditorJsFroala_editorMinJs.default;
 		}],
 		execute: function () {
 			_export('FroalaEditor1', FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = inject(Element, Config, ObserverLocator), _dec(_class = _dec2(_class = (_class2 = function () {
@@ -125,7 +125,7 @@ System.register(['aurelia-framework', 'aurelia-binding', './froala-editor-config
 						return _this2.value = editor.html.get();
 					});
 
-					this.instance = new FroalaEditor('#' + this.element.id, Object.assign({}, this.config));
+					this.instance = new FroalaEditor(this.element, Object.assign({}, this.config));
 				};
 
 				FroalaEditor1.prototype.tearDown = function tearDown() {

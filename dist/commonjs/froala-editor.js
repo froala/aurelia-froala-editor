@@ -13,9 +13,9 @@ var _aureliaBinding = require('aurelia-binding');
 
 var _froalaEditorConfig = require('./froala-editor-config');
 
-var _froala_editorPkgdMin = require('froala-editor/js/froala_editor.pkgd.min.js');
+var _froala_editorMin = require('froala-editor/js/froala_editor.min.js');
 
-var _froala_editorPkgdMin2 = _interopRequireDefault(_froala_editorPkgdMin);
+var _froala_editorMin2 = _interopRequireDefault(_froala_editorMin);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -122,7 +122,7 @@ var FroalaEditor1 = exports.FroalaEditor1 = (_dec = (0, _aureliaFramework.custom
 			return _this2.value = editor.html.get();
 		});
 
-		this.instance = new _froala_editorPkgdMin2.default('#' + this.element.id, Object.assign({}, this.config));
+		this.instance = new _froala_editorMin2.default(this.element, Object.assign({}, this.config));
 	};
 
 	FroalaEditor1.prototype.tearDown = function tearDown() {

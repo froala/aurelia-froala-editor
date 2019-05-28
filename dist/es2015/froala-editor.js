@@ -48,7 +48,7 @@ import { ObserverLocator } from "aurelia-binding";
 
 import { Config } from './froala-editor-config';
 
-import FroalaEditor from 'froala-editor/js/froala_editor.pkgd.min.js';
+import FroalaEditor from 'froala-editor/js/froala_editor.min.js';
 
 export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = inject(Element, Config, ObserverLocator), _dec(_class = _dec2(_class = (_class2 = class FroalaEditor1 {
 
@@ -95,7 +95,7 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 		this.instance.addEventListener('contentChanged', (e, editor) => this.value = editor.html.get());
 		this.instance.addEventListener('blur', (e, editor) => this.value = editor.html.get());
 
-		this.instance = new FroalaEditor(`#${this.element.id}`, Object.assign({}, this.config));
+		this.instance = new FroalaEditor(this.element, Object.assign({}, this.config));
 	}
 
 	tearDown() {

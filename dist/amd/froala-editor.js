@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', 'aurelia-binding', './froala-editor-config', 'froala-editor/js/froala_editor.pkgd.min.js'], function (exports, _aureliaFramework, _aureliaBinding, _froalaEditorConfig, _froala_editorPkgdMin) {
+define(['exports', 'aurelia-framework', 'aurelia-binding', './froala-editor-config', 'froala-editor/js/froala_editor.min.js'], function (exports, _aureliaFramework, _aureliaBinding, _froalaEditorConfig, _froala_editorMin) {
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -6,7 +6,7 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', './froala-editor-conf
 	});
 	exports.FroalaEditor1 = undefined;
 
-	var _froala_editorPkgdMin2 = _interopRequireDefault(_froala_editorPkgdMin);
+	var _froala_editorMin2 = _interopRequireDefault(_froala_editorMin);
 
 	function _interopRequireDefault(obj) {
 		return obj && obj.__esModule ? obj : {
@@ -123,7 +123,7 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', './froala-editor-conf
 				return _this2.value = editor.html.get();
 			});
 
-			this.instance = new _froala_editorPkgdMin2.default('#' + this.element.id, Object.assign({}, this.config));
+			this.instance = new _froala_editorMin2.default(this.element, Object.assign({}, this.config));
 		};
 
 		FroalaEditor1.prototype.tearDown = function tearDown() {
