@@ -63,11 +63,7 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 
 		this.config = config.options();
 
-		this.subscriptions = [observerLocator.getObserver(this, 'value').subscribe((newValue, oldValue) => {
-			if (this.instance && this.instance.html.get() != newValue) {
-				this.instance.html(newValue);
-			}
-		})];
+		this.observerLocator = observerLocator;
 	}
 
 	tearUp() {
@@ -82,6 +78,12 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 		}
 
 		this.instance.innerHTML = this.value;
+
+		this.subscriptions = [this.observerLocator.getObserver(this, 'value').subscribe((newValue, oldValue) => {
+			if (this.instance && this.instance.html.get() != newValue) {
+				this.instance.html.set(newValue);
+			}
+		})];
 
 		if (this.eventHandlers && this.eventHandlers.length != 0) {
 			for (let eventHandlerName in this.eventHandlers) {

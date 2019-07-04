@@ -23,16 +23,7 @@ export class FroalaEditor1 {
     // Read config.
     this.config = config.options();
 
-    // Observe value.
-		this.subscriptions = [
-			observerLocator
-					.getObserver(this, 'value')
-					.subscribe((newValue, oldValue) => {
-						if (this.instance && this.instance.html.get() != newValue) {
-							this.instance.html(newValue);
-						}
-					})
-				];
+		this.observerLocator = observerLocator;
 	}
 
   // Starting poing.
@@ -52,6 +43,17 @@ export class FroalaEditor1 {
 
     // Set the HTML for the inner element.
     this.instance.innerHTML = this.value;
+
+ 		// Observe value.
+		this.subscriptions = [
+			this.observerLocator
+					.getObserver(this, 'value')
+					.subscribe((newValue, oldValue) => {
+						if (this.instance && this.instance.html.get() != newValue) {
+							this.instance.html.set(newValue);
+						}
+					})
+			];
 
     // Set events.
 		if (this.eventHandlers && this.eventHandlers.length != 0) {

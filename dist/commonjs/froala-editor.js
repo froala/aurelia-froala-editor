@@ -66,8 +66,6 @@ function _initializerWarningHelper(descriptor, context) {
 
 var FroalaEditor1 = exports.FroalaEditor1 = (_dec = (0, _aureliaFramework.customElement)('froala-editor'), _dec2 = (0, _aureliaFramework.inject)(Element, _froalaEditorConfig.Config, _aureliaBinding.ObserverLocator), _dec(_class = _dec2(_class = (_class2 = function () {
 	function FroalaEditor1(element, config, observerLocator) {
-		var _this = this;
-
 		_classCallCheck(this, FroalaEditor1);
 
 		_initDefineProp(this, 'value', _descriptor, this);
@@ -80,15 +78,11 @@ var FroalaEditor1 = exports.FroalaEditor1 = (_dec = (0, _aureliaFramework.custom
 
 		this.config = config.options();
 
-		this.subscriptions = [observerLocator.getObserver(this, 'value').subscribe(function (newValue, oldValue) {
-			if (_this.instance && _this.instance.html.get() != newValue) {
-				_this.instance.html(newValue);
-			}
-		})];
+		this.observerLocator = observerLocator;
 	}
 
 	FroalaEditor1.prototype.tearUp = function tearUp() {
-		var _this2 = this;
+		var _this = this;
 
 		if (this.config.iframe) {
 			this.instance = this.element.getElementsByTagName('textarea')[0];
@@ -102,10 +96,16 @@ var FroalaEditor1 = exports.FroalaEditor1 = (_dec = (0, _aureliaFramework.custom
 
 		this.instance.innerHTML = this.value;
 
+		this.subscriptions = [this.observerLocator.getObserver(this, 'value').subscribe(function (newValue, oldValue) {
+			if (_this.instance && _this.instance.html.get() != newValue) {
+				_this.instance.html.set(newValue);
+			}
+		})];
+
 		if (this.eventHandlers && this.eventHandlers.length != 0) {
 			var _loop = function _loop(eventHandlerName) {
-				var handler = _this2.eventHandlers[eventHandlerName];
-				_this2.instance.addEventListener('' + eventHandlerName, function () {
+				var handler = _this.eventHandlers[eventHandlerName];
+				_this.instance.addEventListener('' + eventHandlerName, function () {
 					var p = arguments;
 					return handler.apply(this, p);
 				});
@@ -116,10 +116,10 @@ var FroalaEditor1 = exports.FroalaEditor1 = (_dec = (0, _aureliaFramework.custom
 			}
 		}
 		this.instance.addEventListener('contentChanged', function (e, editor) {
-			return _this2.value = editor.html.get();
+			return _this.value = editor.html.get();
 		});
 		this.instance.addEventListener('blur', function (e, editor) {
-			return _this2.value = editor.html.get();
+			return _this.value = editor.html.get();
 		});
 
 		this.instance = new _froala_editorPkgdMin2.default('#' + this.element.id, Object.assign({}, this.config));
