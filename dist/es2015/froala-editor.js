@@ -68,6 +68,10 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 		this.observerLocator = observerLocator;
 	}
 
+	bind(bindingContext, overrideContext) {
+		this.parent = bindingContext;
+	}
+
 	tearUp() {
 		if (this.config.iframe) {
 			this.instance = this.element.getElementsByTagName('textarea')[0];
@@ -87,19 +91,18 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 			}
 		})];
 
-		if (this.eventHandlers && this.eventHandlers.length != 0) {
-			for (let eventHandlerName in this.eventHandlers) {
-				let handler = this.eventHandlers[eventHandlerName];
-				this.instance.addEventListener(`${eventHandlerName}`, function () {
-					let p = arguments;
-					return handler.apply(this, p);
-				});
+		this.instance = new FroalaEditor(`#${this.element.id} div`, Object.assign({}, this.config), () => {
+			if (this.eventHandlers && this.eventHandlers.length != 0) {
+				for (let eventHandlerName in this.eventHandlers) {
+					let handler = this.eventHandlers[eventHandlerName];
+					this.instance.events.on(`${eventHandlerName}`, (...args) => {
+						return handler.apply(this.parent, args);
+					});
+				}
 			}
-		}
-		this.instance.addEventListener('contentChanged', (e, editor) => this.value = editor.html.get());
-		this.instance.addEventListener('blur', (e, editor) => this.value = editor.html.get());
-
-		this.instance = new FroalaEditor(`#${this.element.id}`, Object.assign({}, this.config));
+			this.instance.events.on('blur', e => this.value = this.instance.html.get());
+			this.instance.events.on('contentChanged', e => this.value = this.instance.html.get());
+		});
 	}
 
 	tearDown() {

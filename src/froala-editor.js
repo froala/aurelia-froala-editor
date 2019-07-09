@@ -14,6 +14,7 @@ export class FroalaEditor1 {
 	@bindable eventHandlers = {};
   @bindable instance;
 
+	parent;
 	element;
 
 	constructor (element, config, observerLocator) {
@@ -24,6 +25,10 @@ export class FroalaEditor1 {
 		this.config = config.options();
 
 		this.observerLocator = observerLocator;
+	}
+
+  bind(bindingContext, overrideContext) {
+		this.parent = bindingContext;
 	}
 
 	// Starting point.
@@ -55,21 +60,20 @@ export class FroalaEditor1 {
 					})
 			];
 
-		// Set events.
-		if (this.eventHandlers && this.eventHandlers.length != 0) {
-			for(let eventHandlerName in this.eventHandlers) {
-				let handler = this.eventHandlers[eventHandlerName];
-				this.instance.addEventListener(`${eventHandlerName}`, function() {
-					let p = arguments;
-					return handler.apply(this, p)
-				});
-			}
-		}
-		this.instance.addEventListener('contentChanged', (e, editor) => this.value = editor.html.get());
-		this.instance.addEventListener('blur', (e, editor) => this.value = editor.html.get())
-
 		// Initialize editor.
-		this.instance = new FroalaEditor(`#${this.element.id}`, Object.assign({}, this.config));
+		this.instance = new FroalaEditor(`#${this.element.id} div`, Object.assign({}, this.config), () => {
+			// Set Events
+			if (this.eventHandlers && this.eventHandlers.length != 0) {
+				for(let eventHandlerName in this.eventHandlers) {
+					let handler = this.eventHandlers[eventHandlerName];
+					this.instance.events.on(`${eventHandlerName}`, (...args) => {
+						return handler.apply(this.parent, args);
+					});
+				}
+			}
+			this.instance.events.on('blur', (e) => this.value = this.instance.html.get());
+			this.instance.events.on('contentChanged', (e) => this.value = this.instance.html.get());
+		});
 	}
 
 	// Destroy.

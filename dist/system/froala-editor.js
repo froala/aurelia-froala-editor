@@ -86,6 +86,10 @@ System.register(['aurelia-framework', 'aurelia-binding', './froala-editor-config
 					this.observerLocator = observerLocator;
 				}
 
+				FroalaEditor1.prototype.bind = function bind(bindingContext, overrideContext) {
+					this.parent = bindingContext;
+				};
+
 				FroalaEditor1.prototype.tearUp = function tearUp() {
 					var _this = this;
 
@@ -107,27 +111,30 @@ System.register(['aurelia-framework', 'aurelia-binding', './froala-editor-config
 						}
 					})];
 
-					if (this.eventHandlers && this.eventHandlers.length != 0) {
-						var _loop = function _loop(eventHandlerName) {
-							var handler = _this.eventHandlers[eventHandlerName];
-							_this.instance.addEventListener('' + eventHandlerName, function () {
-								var p = arguments;
-								return handler.apply(this, p);
-							});
-						};
+					this.instance = new FroalaEditor('#' + this.element.id + ' div', Object.assign({}, this.config), function () {
+						if (_this.eventHandlers && _this.eventHandlers.length != 0) {
+							var _loop = function _loop(eventHandlerName) {
+								var handler = _this.eventHandlers[eventHandlerName];
+								_this.instance.events.on('' + eventHandlerName, function () {
+									for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+										args[_key] = arguments[_key];
+									}
 
-						for (var eventHandlerName in this.eventHandlers) {
-							_loop(eventHandlerName);
+									return handler.apply(_this.parent, args);
+								});
+							};
+
+							for (var eventHandlerName in _this.eventHandlers) {
+								_loop(eventHandlerName);
+							}
 						}
-					}
-					this.instance.addEventListener('contentChanged', function (e, editor) {
-						return _this.value = editor.html.get();
+						_this.instance.events.on('blur', function (e) {
+							return _this.value = _this.instance.html.get();
+						});
+						_this.instance.events.on('contentChanged', function (e) {
+							return _this.value = _this.instance.html.get();
+						});
 					});
-					this.instance.addEventListener('blur', function (e, editor) {
-						return _this.value = editor.html.get();
-					});
-
-					this.instance = new FroalaEditor('#' + this.element.id, Object.assign({}, this.config));
 				};
 
 				FroalaEditor1.prototype.tearDown = function tearDown() {
