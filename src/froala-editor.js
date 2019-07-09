@@ -34,12 +34,8 @@ export class FroalaEditor1 {
 	// Starting point.
 	tearUp () {
 		// Get element.
-		if (this.config.iframe) {
-			this.instance = this.element.getElementsByTagName('textarea')[0];
-		}
-		else {
-			this.instance = this.element.getElementsByTagName('div')[0];
-		}
+		const editorSelector = this.config.iframe ? 'textarea' : 'div';
+		this.instance = this.element.querySelector(editorSelector);
 
 		// Check if editor isn't already initialized.
 		if (this.instance['data-froala.editor']) {
@@ -58,7 +54,7 @@ export class FroalaEditor1 {
 			];
 
 		// Initialize editor.
-		this.instance = new FroalaEditor(`#${this.element.id} div`, Object.assign({}, this.config), () => {
+		this.instance = new FroalaEditor(`#${this.element.id} ${editorSelector}`, Object.assign({}, this.config), () => {
 			// Set initial HTML value.
 			this.instance.html.set(this.value);
 

@@ -73,11 +73,8 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 	}
 
 	tearUp() {
-		if (this.config.iframe) {
-			this.instance = this.element.getElementsByTagName('textarea')[0];
-		} else {
-			this.instance = this.element.getElementsByTagName('div')[0];
-		}
+		const editorSelector = this.config.iframe ? 'textarea' : 'div';
+		this.instance = this.element.querySelector(editorSelector);
 
 		if (this.instance['data-froala.editor']) {
 			return;
@@ -89,7 +86,7 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 			}
 		})];
 
-		this.instance = new FroalaEditor(`#${this.element.id} div`, Object.assign({}, this.config), () => {
+		this.instance = new FroalaEditor(`#${this.element.id} ${editorSelector}`, Object.assign({}, this.config), () => {
 			this.instance.html.set(this.value);
 
 			if (this.eventHandlers && this.eventHandlers.length != 0) {

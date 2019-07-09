@@ -90,11 +90,8 @@ var FroalaEditor1 = exports.FroalaEditor1 = (_dec = (0, _aureliaFramework.custom
 	FroalaEditor1.prototype.tearUp = function tearUp() {
 		var _this = this;
 
-		if (this.config.iframe) {
-			this.instance = this.element.getElementsByTagName('textarea')[0];
-		} else {
-			this.instance = this.element.getElementsByTagName('div')[0];
-		}
+		var editorSelector = this.config.iframe ? 'textarea' : 'div';
+		this.instance = this.element.querySelector(editorSelector);
 
 		if (this.instance['data-froala.editor']) {
 			return;
@@ -106,7 +103,7 @@ var FroalaEditor1 = exports.FroalaEditor1 = (_dec = (0, _aureliaFramework.custom
 			}
 		})];
 
-		this.instance = new _froala_editorPkgdMin2.default('#' + this.element.id + ' div', Object.assign({}, this.config), function () {
+		this.instance = new _froala_editorPkgdMin2.default('#' + this.element.id + ' ' + editorSelector, Object.assign({}, this.config), function () {
 			_this.instance.html.set(_this.value);
 
 			if (_this.eventHandlers && _this.eventHandlers.length != 0) {
