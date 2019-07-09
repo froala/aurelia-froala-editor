@@ -26,7 +26,7 @@ export class FroalaEditor1 {
 		this.observerLocator = observerLocator;
 	}
 
-	// Starting poing.
+	// Starting point.
 	tearUp () {
 		// Get element.
 		if (this.config.iframe) {
