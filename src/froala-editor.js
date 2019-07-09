@@ -17,34 +17,34 @@ export class FroalaEditor1 {
 	instance;
 
 	constructor (element, config, observerLocator) {
-    // Store element.
+		// Store element.
 		this.element = element;
 
-    // Read config.
-    this.config = config.options();
+		// Read config.
+		this.config = config.options();
 
 		this.observerLocator = observerLocator;
 	}
 
-  // Starting poing.
-	  tearUp () {
-    // Get element.
-        if (this.config.iframe) {
-            this.instance = this.element.getElementsByTagName('textarea')[0];
-        }
-        else {
-            this.instance = this.element.getElementsByTagName('div')[0];
-        }
+	// Starting poing.
+	tearUp () {
+		// Get element.
+		if (this.config.iframe) {
+			this.instance = this.element.getElementsByTagName('textarea')[0];
+		}
+		else {
+			this.instance = this.element.getElementsByTagName('div')[0];
+		}
 
-    // Check if editor isn't already initialized.
+		// Check if editor isn't already initialized.
 		if (this.instance['data-froala.editor']) {
 		  return;
 		}
 
-    // Set the HTML for the inner element.
-    this.instance.innerHTML = this.value;
+		// Set the HTML for the inner element.
+		this.instance.innerHTML = this.value;
 
- 		// Observe value.
+		// Observe value.
 		this.subscriptions = [
 			this.observerLocator
 					.getObserver(this, 'value')
@@ -55,7 +55,7 @@ export class FroalaEditor1 {
 					})
 			];
 
-    // Set events.
+		// Set events.
 		if (this.eventHandlers && this.eventHandlers.length != 0) {
 			for(let eventHandlerName in this.eventHandlers) {
 				let handler = this.eventHandlers[eventHandlerName];
@@ -63,31 +63,30 @@ export class FroalaEditor1 {
 					let p = arguments;
 					return handler.apply(this, p)
 				});
-
 			}
 		}
 		this.instance.addEventListener('contentChanged', (e, editor) => this.value = editor.html.get());
 		this.instance.addEventListener('blur', (e, editor) => this.value = editor.html.get())
 
-    // Initialize editor.
+		// Initialize editor.
 		this.instance = new FroalaEditor(`#${this.element.id}`, Object.assign({}, this.config));
 	}
 
-  // Destroy.
+	// Destroy.
 	tearDown () {
 		if (this.instance && this.instance['data-froala.editor']) {
-    	this.instance.destroy();
-  	}
+			this.instance.destroy();
+		}
 
 		this.instance = null;
 	}
 
-  // Setup.
+	// Setup.
 	attached () {
 		this.tearUp();
 	}
 
-  // Destroy.
+	// Destroy.
 	detached () {
 		this.tearDown();
 	}
