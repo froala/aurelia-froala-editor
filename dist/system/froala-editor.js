@@ -103,8 +103,6 @@ System.register(['aurelia-framework', 'aurelia-binding', './froala-editor-config
 						return;
 					}
 
-					this.instance.innerHTML = this.value;
-
 					this.subscriptions = [this.observerLocator.getObserver(this, 'value').subscribe(function (newValue, oldValue) {
 						if (_this.instance && _this.instance.html.get() != newValue) {
 							_this.instance.html.set(newValue);
@@ -112,6 +110,8 @@ System.register(['aurelia-framework', 'aurelia-binding', './froala-editor-config
 					})];
 
 					this.instance = new FroalaEditor('#' + this.element.id + ' div', Object.assign({}, this.config), function () {
+						_this.instance.html.set(_this.value);
+
 						if (_this.eventHandlers && _this.eventHandlers.length != 0) {
 							var _loop = function _loop(eventHandlerName) {
 								var handler = _this.eventHandlers[eventHandlerName];

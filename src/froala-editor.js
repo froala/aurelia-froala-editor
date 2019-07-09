@@ -46,9 +46,6 @@ export class FroalaEditor1 {
 		  return;
 		}
 
-		// Set the HTML for the inner element.
-		this.instance.innerHTML = this.value;
-
 		// Observe value.
 		this.subscriptions = [
 			this.observerLocator
@@ -62,6 +59,9 @@ export class FroalaEditor1 {
 
 		// Initialize editor.
 		this.instance = new FroalaEditor(`#${this.element.id} div`, Object.assign({}, this.config), () => {
+			// Set initial HTML value.
+			this.instance.html.set(this.value);
+
 			// Set Events
 			if (this.eventHandlers && this.eventHandlers.length != 0) {
 				for(let eventHandlerName in this.eventHandlers) {

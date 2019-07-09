@@ -83,8 +83,6 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 			return;
 		}
 
-		this.instance.innerHTML = this.value;
-
 		this.subscriptions = [this.observerLocator.getObserver(this, 'value').subscribe((newValue, oldValue) => {
 			if (this.instance && this.instance.html.get() != newValue) {
 				this.instance.html.set(newValue);
@@ -92,6 +90,8 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 		})];
 
 		this.instance = new FroalaEditor(`#${this.element.id} div`, Object.assign({}, this.config), () => {
+			this.instance.html.set(this.value);
+
 			if (this.eventHandlers && this.eventHandlers.length != 0) {
 				for (let eventHandlerName in this.eventHandlers) {
 					let handler = this.eventHandlers[eventHandlerName];
