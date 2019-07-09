@@ -1,4 +1,4 @@
-var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
 function _initDefineProp(target, property, descriptor, context) {
 	if (!descriptor) return;
@@ -58,6 +58,8 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 		_initDefineProp(this, 'config', _descriptor2, this);
 
 		_initDefineProp(this, 'eventHandlers', _descriptor3, this);
+
+		_initDefineProp(this, 'instance', _descriptor4, this);
 
 		this.element = element;
 
@@ -128,4 +130,7 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 	initializer: function () {
 		return {};
 	}
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'instance', [bindable], {
+	enumerable: true,
+	initializer: null
 })), _class2)) || _class) || _class);

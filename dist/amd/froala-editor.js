@@ -63,7 +63,7 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', './froala-editor-conf
 		throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 	}
 
-	var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+	var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
 	var FroalaEditor1 = exports.FroalaEditor1 = (_dec = (0, _aureliaFramework.customElement)('froala-editor'), _dec2 = (0, _aureliaFramework.inject)(Element, _froalaEditorConfig.Config, _aureliaBinding.ObserverLocator), _dec(_class = _dec2(_class = (_class2 = function () {
 		function FroalaEditor1(element, config, observerLocator) {
@@ -74,6 +74,8 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', './froala-editor-conf
 			_initDefineProp(this, 'config', _descriptor2, this);
 
 			_initDefineProp(this, 'eventHandlers', _descriptor3, this);
+
+			_initDefineProp(this, 'instance', _descriptor4, this);
 
 			this.element = element;
 
@@ -156,5 +158,8 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', './froala-editor-conf
 		initializer: function initializer() {
 			return {};
 		}
+	}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'instance', [_aureliaFramework.bindable], {
+		enumerable: true,
+		initializer: null
 	})), _class2)) || _class) || _class);
 });

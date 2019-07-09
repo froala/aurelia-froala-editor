@@ -10,11 +10,11 @@ import FroalaEditor from 'froala-editor/js/froala_editor.pkgd.min.js'
 @inject(Element, Config, ObserverLocator)
 export class FroalaEditor1 {
 	@bindable value;
-	@bindable config = {}
-	@bindable eventHandlers = {}
+	@bindable config = {};
+	@bindable eventHandlers = {};
+  @bindable instance;
 
 	element;
-	instance;
 
 	constructor (element, config, observerLocator) {
 		// Store element.

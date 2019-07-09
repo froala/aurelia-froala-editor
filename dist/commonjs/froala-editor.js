@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.FroalaEditor1 = undefined;
 
-var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
 var _aureliaFramework = require('aurelia-framework');
 
@@ -73,6 +73,8 @@ var FroalaEditor1 = exports.FroalaEditor1 = (_dec = (0, _aureliaFramework.custom
 		_initDefineProp(this, 'config', _descriptor2, this);
 
 		_initDefineProp(this, 'eventHandlers', _descriptor3, this);
+
+		_initDefineProp(this, 'instance', _descriptor4, this);
 
 		this.element = element;
 
@@ -155,4 +157,7 @@ var FroalaEditor1 = exports.FroalaEditor1 = (_dec = (0, _aureliaFramework.custom
 	initializer: function initializer() {
 		return {};
 	}
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'instance', [_aureliaFramework.bindable], {
+	enumerable: true,
+	initializer: null
 })), _class2)) || _class) || _class);
