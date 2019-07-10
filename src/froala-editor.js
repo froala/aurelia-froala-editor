@@ -12,7 +12,7 @@ export class FroalaEditor1 {
 	@bindable value;
 	@bindable config = {};
 	@bindable eventHandlers = {};
-  @bindable instance;
+	@bindable instance;
 
 	parent;
 	element;
@@ -27,7 +27,8 @@ export class FroalaEditor1 {
 		this.observerLocator = observerLocator;
 	}
 
-  bind(bindingContext, overrideContext) {
+	// Get parent context to use in eventhandlers
+	bind(bindingContext, overrideContext) {
 		this.parent = bindingContext;
 	}
 
