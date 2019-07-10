@@ -77,9 +77,7 @@ var FroalaEditor1 = exports.FroalaEditor1 = (_dec = (0, _aureliaFramework.custom
 		_initDefineProp(this, 'instance', _descriptor4, this);
 
 		this.element = element;
-
 		this.config = config.options();
-
 		this.observerLocator = observerLocator;
 	}
 
@@ -87,7 +85,7 @@ var FroalaEditor1 = exports.FroalaEditor1 = (_dec = (0, _aureliaFramework.custom
 		this.parent = bindingContext;
 	};
 
-	FroalaEditor1.prototype.tearUp = function tearUp() {
+	FroalaEditor1.prototype.attached = function attached() {
 		var _this = this;
 
 		var editorSelector = this.config.iframe ? 'textarea' : 'div';
@@ -130,19 +128,11 @@ var FroalaEditor1 = exports.FroalaEditor1 = (_dec = (0, _aureliaFramework.custom
 		});
 	};
 
-	FroalaEditor1.prototype.tearDown = function tearDown() {
+	FroalaEditor1.prototype.detached = function detached() {
 		if (this.instance != null) {
 			this.instance.destroy();
 			this.instance = null;
 		}
-	};
-
-	FroalaEditor1.prototype.attached = function attached() {
-		this.tearUp();
-	};
-
-	FroalaEditor1.prototype.detached = function detached() {
-		this.tearDown();
 	};
 
 	return FroalaEditor1;

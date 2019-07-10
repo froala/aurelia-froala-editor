@@ -62,9 +62,7 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 		_initDefineProp(this, 'instance', _descriptor4, this);
 
 		this.element = element;
-
 		this.config = config.options();
-
 		this.observerLocator = observerLocator;
 	}
 
@@ -72,7 +70,7 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 		this.parent = bindingContext;
 	}
 
-	tearUp() {
+	attached() {
 		const editorSelector = this.config.iframe ? 'textarea' : 'div';
 
 		if (this.instance != null) {
@@ -101,19 +99,11 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 		});
 	}
 
-	tearDown() {
+	detached() {
 		if (this.instance != null) {
 			this.instance.destroy();
 			this.instance = null;
 		}
-	}
-
-	attached() {
-		this.tearUp();
-	}
-
-	detached() {
-		this.tearDown();
 	}
 }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'value', [bindable], {
 	enumerable: true,

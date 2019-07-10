@@ -18,12 +18,8 @@ export class FroalaEditor1 {
 	element;
 
 	constructor (element, config, observerLocator) {
-		// Store element.
 		this.element = element;
-
-		// Read config.
 		this.config = config.options();
-
 		this.observerLocator = observerLocator;
 	}
 
@@ -32,8 +28,8 @@ export class FroalaEditor1 {
 		this.parent = bindingContext;
 	}
 
-	// Starting point.
-	tearUp () {
+	// Setup
+	attached() {
 		// Get element.
 		const editorSelector = this.config.iframe ? 'textarea' : 'div';
 
@@ -70,21 +66,11 @@ export class FroalaEditor1 {
 		});
 	}
 
-	// Destroy.
-	tearDown () {
+	// Destroy
+	detached () {
 		if (this.instance != null) {
 			this.instance.destroy();
 			this.instance = null;
 		}
-	}
-
-	// Setup.
-	attached () {
-		this.tearUp();
-	}
-
-	// Destroy.
-	detached () {
-		this.tearDown();
 	}
 }
