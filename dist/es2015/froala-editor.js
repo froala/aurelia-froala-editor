@@ -59,7 +59,7 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 
 		_initDefineProp(this, 'eventHandlers', _descriptor3, this);
 
-		_initDefineProp(this, 'instance', _descriptor4, this);
+		_initDefineProp(this, 'editor', _descriptor4, this);
 
 		this.element = element;
 		this.config = config.options();
@@ -73,36 +73,36 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 	attached() {
 		const editorSelector = this.config.iframe ? 'textarea' : 'div';
 
-		if (this.instance != null) {
+		if (this.editor != null) {
 			return;
 		}
 
 		this.subscriptions = [this.observerLocator.getObserver(this, 'value').subscribe((newValue, oldValue) => {
-			if (this.instance && this.instance.html.get() != newValue) {
-				this.instance.html.set(newValue);
+			if (this.editor && this.editor.html.get() != newValue) {
+				this.editor.html.set(newValue);
 			}
 		})];
 
-		this.instance = new FroalaEditor(`#${this.element.id} ${editorSelector}`, Object.assign({}, this.config), () => {
-			this.instance.html.set(this.value);
+		this.editor = new FroalaEditor(`#${this.element.id} ${editorSelector}`, Object.assign({}, this.config), () => {
+			this.editor.html.set(this.value);
 
 			if (this.eventHandlers && this.eventHandlers.length != 0) {
 				for (let eventHandlerName in this.eventHandlers) {
 					let handler = this.eventHandlers[eventHandlerName];
-					this.instance.events.on(`${eventHandlerName}`, (...args) => {
+					this.editor.events.on(`${eventHandlerName}`, (...args) => {
 						return handler.apply(this.parent, args);
 					});
 				}
 			}
-			this.instance.events.on('blur', e => this.value = this.instance.html.get());
-			this.instance.events.on('contentChanged', e => this.value = this.instance.html.get());
+			this.editor.events.on('blur', e => this.value = this.editor.html.get());
+			this.editor.events.on('contentChanged', e => this.value = this.editor.html.get());
 		});
 	}
 
 	detached() {
-		if (this.instance != null) {
-			this.instance.destroy();
-			this.instance = null;
+		if (this.editor != null) {
+			this.editor.destroy();
+			this.editor = null;
 		}
 	}
 }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'value', [bindable], {
@@ -118,7 +118,7 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 	initializer: function () {
 		return {};
 	}
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'instance', [bindable], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'editor', [bindable], {
 	enumerable: true,
 	initializer: null
 })), _class2)) || _class) || _class);

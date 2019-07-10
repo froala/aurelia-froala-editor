@@ -12,7 +12,7 @@ export class FroalaEditor1 {
 	@bindable value;
 	@bindable config = {};
 	@bindable eventHandlers = {};
-	@bindable instance;
+	@bindable editor;
 
 	parent;
 	element;
@@ -34,43 +34,43 @@ export class FroalaEditor1 {
 		const editorSelector = this.config.iframe ? 'textarea' : 'div';
 
 		// Check if editor isn't already initialized.
-		if (this.instance != null) { return; }
+		if (this.editor != null) { return; }
 
 		// Observe value.
 		this.subscriptions = [
 			this.observerLocator
 					.getObserver(this, 'value')
 					.subscribe((newValue, oldValue) => {
-						if (this.instance && this.instance.html.get() != newValue) {
-							this.instance.html.set(newValue);
+						if (this.editor && this.editor.html.get() != newValue) {
+							this.editor.html.set(newValue);
 						}
 					})
 			];
 
 		// Initialize editor.
-		this.instance = new FroalaEditor(`#${this.element.id} ${editorSelector}`, Object.assign({}, this.config), () => {
+		this.editor = new FroalaEditor(`#${this.element.id} ${editorSelector}`, Object.assign({}, this.config), () => {
 			// Set initial HTML value.
-			this.instance.html.set(this.value);
+			this.editor.html.set(this.value);
 
 			// Set Events
 			if (this.eventHandlers && this.eventHandlers.length != 0) {
 				for(let eventHandlerName in this.eventHandlers) {
 					let handler = this.eventHandlers[eventHandlerName];
-					this.instance.events.on(`${eventHandlerName}`, (...args) => {
+					this.editor.events.on(`${eventHandlerName}`, (...args) => {
 						return handler.apply(this.parent, args);
 					});
 				}
 			}
-			this.instance.events.on('blur', (e) => this.value = this.instance.html.get());
-			this.instance.events.on('contentChanged', (e) => this.value = this.instance.html.get());
+			this.editor.events.on('blur', (e) => this.value = this.editor.html.get());
+			this.editor.events.on('contentChanged', (e) => this.value = this.editor.html.get());
 		});
 	}
 
 	// Destroy
 	detached () {
-		if (this.instance != null) {
-			this.instance.destroy();
-			this.instance = null;
+		if (this.editor != null) {
+			this.editor.destroy();
+			this.editor = null;
 		}
 	}
 }

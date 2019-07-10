@@ -75,7 +75,7 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', './froala-editor-conf
 
 			_initDefineProp(this, 'eventHandlers', _descriptor3, this);
 
-			_initDefineProp(this, 'instance', _descriptor4, this);
+			_initDefineProp(this, 'editor', _descriptor4, this);
 
 			this.element = element;
 			this.config = config.options();
@@ -91,23 +91,23 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', './froala-editor-conf
 
 			var editorSelector = this.config.iframe ? 'textarea' : 'div';
 
-			if (this.instance != null) {
+			if (this.editor != null) {
 				return;
 			}
 
 			this.subscriptions = [this.observerLocator.getObserver(this, 'value').subscribe(function (newValue, oldValue) {
-				if (_this.instance && _this.instance.html.get() != newValue) {
-					_this.instance.html.set(newValue);
+				if (_this.editor && _this.editor.html.get() != newValue) {
+					_this.editor.html.set(newValue);
 				}
 			})];
 
-			this.instance = new _froala_editorPkgdMin2.default('#' + this.element.id + ' ' + editorSelector, Object.assign({}, this.config), function () {
-				_this.instance.html.set(_this.value);
+			this.editor = new _froala_editorPkgdMin2.default('#' + this.element.id + ' ' + editorSelector, Object.assign({}, this.config), function () {
+				_this.editor.html.set(_this.value);
 
 				if (_this.eventHandlers && _this.eventHandlers.length != 0) {
 					var _loop = function _loop(eventHandlerName) {
 						var handler = _this.eventHandlers[eventHandlerName];
-						_this.instance.events.on('' + eventHandlerName, function () {
+						_this.editor.events.on('' + eventHandlerName, function () {
 							for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
 								args[_key] = arguments[_key];
 							}
@@ -120,19 +120,19 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', './froala-editor-conf
 						_loop(eventHandlerName);
 					}
 				}
-				_this.instance.events.on('blur', function (e) {
-					return _this.value = _this.instance.html.get();
+				_this.editor.events.on('blur', function (e) {
+					return _this.value = _this.editor.html.get();
 				});
-				_this.instance.events.on('contentChanged', function (e) {
-					return _this.value = _this.instance.html.get();
+				_this.editor.events.on('contentChanged', function (e) {
+					return _this.value = _this.editor.html.get();
 				});
 			});
 		};
 
 		FroalaEditor1.prototype.detached = function detached() {
-			if (this.instance != null) {
-				this.instance.destroy();
-				this.instance = null;
+			if (this.editor != null) {
+				this.editor.destroy();
+				this.editor = null;
 			}
 		};
 
@@ -150,7 +150,7 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', './froala-editor-conf
 		initializer: function initializer() {
 			return {};
 		}
-	}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'instance', [_aureliaFramework.bindable], {
+	}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'editor', [_aureliaFramework.bindable], {
 		enumerable: true,
 		initializer: null
 	})), _class2)) || _class) || _class);
