@@ -89,9 +89,13 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 			if (this.eventHandlers && this.eventHandlers.length != 0) {
 				for (let eventHandlerName in this.eventHandlers) {
 					let handler = this.eventHandlers[eventHandlerName];
-					this.editor.events.on(`${eventHandlerName}`, (...args) => {
-						return handler.apply(this.parent, args);
-					});
+					if (eventHandlerName === 'initialized') {
+						handler.apply(this.parent);
+					} else {
+						this.editor.events.on(`${eventHandlerName}`, (...args) => {
+							return handler.apply(this.parent, args);
+						});
+					}
 				}
 			}
 			this.editor.events.on('blur', e => this.value = this.editor.html.get());

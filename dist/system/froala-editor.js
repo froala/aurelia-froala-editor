@@ -109,13 +109,17 @@ System.register(['aurelia-framework', 'aurelia-binding', './froala-editor-config
 						if (_this.eventHandlers && _this.eventHandlers.length != 0) {
 							var _loop = function _loop(eventHandlerName) {
 								var handler = _this.eventHandlers[eventHandlerName];
-								_this.editor.events.on('' + eventHandlerName, function () {
-									for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-										args[_key] = arguments[_key];
-									}
+								if (eventHandlerName === 'initialized') {
+									handler.apply(_this.parent);
+								} else {
+									_this.editor.events.on('' + eventHandlerName, function () {
+										for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+											args[_key] = arguments[_key];
+										}
 
-									return handler.apply(_this.parent, args);
-								});
+										return handler.apply(_this.parent, args);
+									});
+								}
 							};
 
 							for (var eventHandlerName in _this.eventHandlers) {
