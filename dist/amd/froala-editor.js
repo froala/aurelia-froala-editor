@@ -92,9 +92,8 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', './froala-editor-conf
 			var _this = this;
 
 			var editorSelector = this.config.iframe ? 'textarea' : 'div';
-			this.instance = this.element.querySelector(editorSelector);
 
-			if (this.instance['data-froala.editor']) {
+			if (this.instance != null) {
 				return;
 			}
 
@@ -133,11 +132,10 @@ define(['exports', 'aurelia-framework', 'aurelia-binding', './froala-editor-conf
 		};
 
 		FroalaEditor1.prototype.tearDown = function tearDown() {
-			if (this.instance && this.instance['data-froala.editor']) {
+			if (this.instance != null) {
 				this.instance.destroy();
+				this.instance = null;
 			}
-
-			this.instance = null;
 		};
 
 		FroalaEditor1.prototype.attached = function attached() {

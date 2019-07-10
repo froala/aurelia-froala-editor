@@ -35,12 +35,9 @@ export class FroalaEditor1 {
 	tearUp () {
 		// Get element.
 		const editorSelector = this.config.iframe ? 'textarea' : 'div';
-		this.instance = this.element.querySelector(editorSelector);
 
 		// Check if editor isn't already initialized.
-		if (this.instance['data-froala.editor']) {
-		  return;
-		}
+		if (this.instance != null) { return; }
 
 		// Observe value.
 		this.subscriptions = [
@@ -74,11 +71,10 @@ export class FroalaEditor1 {
 
 	// Destroy.
 	tearDown () {
-		if (this.instance && this.instance['data-froala.editor']) {
+		if (this.instance != null) {
 			this.instance.destroy();
+			this.instance = null;
 		}
-
-		this.instance = null;
 	}
 
 	// Setup.

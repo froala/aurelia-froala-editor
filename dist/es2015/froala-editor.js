@@ -74,9 +74,8 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 
 	tearUp() {
 		const editorSelector = this.config.iframe ? 'textarea' : 'div';
-		this.instance = this.element.querySelector(editorSelector);
 
-		if (this.instance['data-froala.editor']) {
+		if (this.instance != null) {
 			return;
 		}
 
@@ -103,11 +102,10 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 	}
 
 	tearDown() {
-		if (this.instance && this.instance['data-froala.editor']) {
+		if (this.instance != null) {
 			this.instance.destroy();
+			this.instance = null;
 		}
-
-		this.instance = null;
 	}
 
 	attached() {
