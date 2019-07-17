@@ -95,7 +95,7 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 		this.instance.addEventListener('contentChanged', (e, editor) => this.value = editor.html.get());
 		this.instance.addEventListener('blur', (e, editor) => this.value = editor.html.get());
 
-		this.instance = new FroalaEditor(`#${this.element.id}`, Object.assign({}, this.config));
+		this.instance = new FroalaEditor(this.element, Object.assign({}, this.config));
 	}
 
 	tearDown() {
