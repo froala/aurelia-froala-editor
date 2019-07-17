@@ -103,7 +103,7 @@ System.register(['aurelia-framework', 'aurelia-binding', './froala-editor-config
 						}
 					})];
 
-					this.editor = new FroalaEditor('#' + this.element.id + ' ' + editorSelector, Object.assign({}, this.config), function () {
+					this.editor = new FroalaEditor(this.element.querySelector(editorSelector), Object.assign({}, this.config), function () {
 						_this.editor.html.set(_this.value);
 
 						if (_this.eventHandlers && _this.eventHandlers.length != 0) {

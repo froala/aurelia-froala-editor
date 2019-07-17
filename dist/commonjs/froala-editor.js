@@ -100,7 +100,7 @@ var FroalaEditor1 = exports.FroalaEditor1 = (_dec = (0, _aureliaFramework.custom
 			}
 		})];
 
-		this.editor = new _froala_editorPkgdMin2.default('#' + this.element.id + ' ' + editorSelector, Object.assign({}, this.config), function () {
+		this.editor = new _froala_editorPkgdMin2.default(this.element.querySelector(editorSelector), Object.assign({}, this.config), function () {
 			_this.editor.html.set(_this.value);
 
 			if (_this.eventHandlers && _this.eventHandlers.length != 0) {

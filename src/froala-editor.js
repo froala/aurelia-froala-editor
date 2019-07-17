@@ -48,7 +48,7 @@ export class FroalaEditor1 {
 			];
 
 		// Initialize editor.
-		this.editor = new FroalaEditor(`#${this.element.id} ${editorSelector}`, Object.assign({}, this.config), () => {
+		this.editor = new FroalaEditor(this.element.querySelector(editorSelector), Object.assign({}, this.config), () => {
 			// Set initial HTML value.
 			this.editor.html.set(this.value);
 

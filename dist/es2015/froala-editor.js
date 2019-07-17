@@ -83,7 +83,7 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 			}
 		})];
 
-		this.editor = new FroalaEditor(`#${this.element.id} ${editorSelector}`, Object.assign({}, this.config), () => {
+		this.editor = new FroalaEditor(this.element.querySelector(editorSelector), Object.assign({}, this.config), () => {
 			this.editor.html.set(this.value);
 
 			if (this.eventHandlers && this.eventHandlers.length != 0) {
