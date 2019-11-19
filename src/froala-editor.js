@@ -65,6 +65,7 @@ export class FroalaEditor1 {
 					}
 				}
 			}
+
 			this.editor.events.on('blur', (e) => this.value = this.editor.html.get());
 			this.editor.events.on('contentChanged', (e) => this.value = this.editor.html.get());
 		});

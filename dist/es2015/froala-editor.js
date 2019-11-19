@@ -81,6 +81,7 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 			if (this.editor && this.editor.html.get() != newValue) {
 				this.editor.html.set(newValue);
 			}
+
 		})];
 
 		this.editor = new FroalaEditor(this.element.querySelector(editorSelector), Object.assign({}, this.config), () => {
