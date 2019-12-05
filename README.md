@@ -17,6 +17,9 @@
 4. [Usage](#usage)
 5. [License](#license)
 
+#### Note
+>To use third-party plugins (i.e font-awesome,spell-checker,embedly and advanced image-edit) please use Aurelia with Webpack.
+
 ## Installation instructions
 
 Install `aurelia-froala-editor` from `npm`
@@ -57,7 +60,6 @@ npm install aurelia-froala-editor --save
 
 
 ```javascript
-...
 
 // Use the aurelia-froala-editor plugin.
 aurelia.use.plugin('aurelia-froala-editor');
@@ -72,19 +74,7 @@ aurelia.use.plugin('aurelia-froala-editor');
 <froala-editor></froala-editor>
 ```
 
-- In `aurelia_project/aurelia.json` file set the builder loader plugins stub to `false`
-
-```javascript
-// Editor files.
-import "froala-editor/js/froala_editor.pkgd.min";
-
-...
-
-// Use the aurelia-froala-editor plugin.
-aurelia.use.plugin('aurelia-froala-editor');
-```
-
-- ​
+- If you are using bundler then in `aurelia_project/aurelia.json` file set the builder loader plugins stub to `false`
 
 ```json
 "loader": {
@@ -119,39 +109,6 @@ aurelia.use.plugin('aurelia-froala-editor');
     "froala-editor"
   ]
 }
-```
-
-- Open newly created `aurelia_project/tasks/copy-assets.js` file and make it look like this:
-
-```javascript
-import gulp from 'gulp';
-import project from '../aurelia.json';
-
-export default function copyAssets(done) {
-  let assets = project.paths.assets;
-
-  assets.forEach(item => {
-    gulp.src(item.src)
-        .pipe(gulp.dest(item.dest));
-    });
-
-  done();
-}
-```
-
-- Open `aurelia-project/tasks/build.js` file and modify it to look like this:
-
-```javascript
-import copyAssets from './copy-assets';
-
-let build = gulp.series(
-  readProjectConfiguration,
-  gulp.parallel(
-    ...
-    copyAssets // Add this.
-  ),
-  writeBundles
-);
 ```
 
 #### Run aurelia-cli
