@@ -144,6 +144,11 @@ import { PLATFORM } from "aurelia-pal";
 
 // Editor files.
 import "froala-editor/js/froala_editor.pkgd.min";
+//Import third-party plugins
+// import "./../node_modules/froala-editor/js/third_party/image_tui.min";
+// import "./../node_modules/froala-editor/js/third_party/embedly.min";
+// import "./../node_modules/froala-editor/js/third_party/font_awesome.min";
+// import "./../node_modules/froala-editor/js/third_party/spell_checker.min";
 
 ...
 
