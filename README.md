@@ -65,7 +65,7 @@ npm install aurelia-froala-editor --save
 aurelia.use.plugin('aurelia-froala-editor');
 ```
 
-- In your `src/app.html` include CSS files and Froala Editor component:
+- In your `src/app.html` include CSS files and Froala Editor component inside `<template>` tag :
 
 ```html
 <require from="froala-editor/css/froala_editor.pkgd.min.css"></require>
@@ -156,7 +156,7 @@ import "froala-editor/js/froala_editor.pkgd.min";
 aurelia.use.plugin(PLATFORM.moduleName('aurelia-froala-editor'));
 ```
 
-- In your `src/app.html` include CSS files and Froala Editor component:
+- In your `src/app.html` include CSS files and Froala Editor component  inside `<template>` tag :
 
 ```html
 <require from="froala-editor/css/froala_editor.pkgd.min.css"></require>
@@ -232,7 +232,7 @@ jspm install npm:froala-editor -o "{format: 'global'}"
 aurelia.use.plugin('aurelia-froala-editor');
 ```
 
-- In your `src/app.html` include CSS files and Froala Editor component:
+- In your `src/app.html` include CSS files and Froala Editor component  inside `<template>` tag :
 
 ```html
 <require from="froala-editor/css/froala_editor.pkgd.min.css"></require>
