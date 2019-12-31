@@ -171,7 +171,7 @@ aurelia.use.plugin(PLATFORM.moduleName('aurelia-froala-editor'));
 const { AureliaPlugin, ModuleDependenciesPlugin } = require('aurelia-webpack-plugin');
   resolve: {
     extensions: ['.js'],
-    modules:[srcDir,'../node_modules/froala-editor/js','node_modules'],
+    modules: [srcDir, path.resolve("node_modules")],
      alias: {
        "FroalaEditor": 'froala_editor.pkgd.min.js'
      }
