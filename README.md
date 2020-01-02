@@ -121,7 +121,7 @@ au run --watch
 
 ### With Webpack
 
-To configure your project with Webpack, follow the resources from Aurelia Docs: http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/setup-webpack/2 .
+To configure your project with Webpack, follow the resources from Aurelia Docs: https://aurelia.io/docs/build-systems/webpack/.
 
 ```bash
 git clone git@github.com:aurelia/skeleton-navigation.git
@@ -202,7 +202,7 @@ npm run start
 
 #### Installing aurelia-cli
 
-To configure your project with JSPM, follow the resources from Aurelia Docs: http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/setup-jspm/1 .
+To configure your project with JSPM, follow the resources from Aurelia Docs: https://aurelia.io/docs/build-systems/jspm.
 
 
 
