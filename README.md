@@ -312,15 +312,20 @@ aurelia.use.plugin('aurelia-froala-editor', config => {
 ```
 
 #### Events
+One can bind events to editor as  given below.
 
-All the [event handlers](https://www.froala.com/wysiwyg-editor/docs/events) are also available:
+>All the [event handlers](https://www.froala.com/wysiwyg-editor/docs/events) are also available.
 
 ```html
 <froala-editor
-	value.two-way="value"
-  	event-handlers.bind = "{
-    	'paste.afterCleanup': processPaste
-  	}"></froala-editor>
+	config.bind="tempCOnfig"></froala-editor>
+```
+```js
+ events: {
+      'focus': function () {
+        console.log('Focus');
+      }
+   }
 ```
 
 ## License
