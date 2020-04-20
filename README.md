@@ -70,7 +70,7 @@ aurelia.use.plugin('aurelia-froala-editor');
 - In your `src/app.html` include CSS files and Froala Editor component:
 
 ```html
-<require from="font-awesome.css"></require>
+<require from="font-awesome/font-awesome.css"></require>
 <require from="froala-editor/css/froala_editor.pkgd.min.css"></require>
 <require from="froala-editor/css/froala_style.min.css"></require>
 
@@ -138,14 +138,14 @@ aurelia.use.plugin('aurelia-froala-editor');
 au generate task copy-assets
 ```
 
-- Open newly created `aurelia_project/tasks/copy-assets.js` file and make it look like this:
+- Open newly created `aurelia_project/tasks/copy-assets.js` or `aurelia_project/tasks/copy-assets.ts` file and make it look like this:
 
 ```javascript
 import gulp from 'gulp';
 import project from '../aurelia.json';
 
 export default function copyAssets(done) {
-  let assets = project.paths.assets;
+  let assets = project.assets;
 
   assets.forEach(item => {
     gulp.src(item.src)
@@ -156,7 +156,7 @@ export default function copyAssets(done) {
 }
 ```
 
-- Open `aurelia-project/tasks/build.js` file and modify it to look like this:
+- Open `aurelia-project/tasks/build.js` or `aurelia-project/tasks/build.ts` file and modify it to look like this:
 
 ```javascript
 import copyAssets from './copy-assets';
@@ -175,21 +175,23 @@ let build = gulp.series(
 
 ```javascript
 {
+  ...
   "paths": {
     "root": "src",
     "resources": "resources",
     "elements": "resources/elements",
     "attributes": "resources/attributes",
     "valueConverters": "resources/value-converters",
-    "bindingBehaviors": "resources/binding-behaviors",
-    "assets": [
-      {
-        "src": "./node_modules/font-awesome/fonts/**/*.*",
-        "dest": "./fonts"
-      }
-    ]
-  }
+    "bindingBehaviors": "resources/binding-behaviors"
+  },
+  "assets": [
+    {
+      "src": "./node_modules/font-awesome/fonts/**/*.*",
+      "dest": "./fonts"
+    }
+  ]
 }
+...
 ```
 
 #### Run aurelia-cli
