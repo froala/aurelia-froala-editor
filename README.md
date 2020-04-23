@@ -17,6 +17,9 @@
 4. [Usage](#usage)
 5. [License](#license)
 
+#### Note
+>To use third-party plugins (i.e font-awesome,spell-checker,embedly and advanced image-edit) please use Aurelia with Webpack.
+
 ## Installation instructions
 
 Install `aurelia-froala-editor` from `npm`
@@ -57,13 +60,12 @@ npm install aurelia-froala-editor --save
 
 
 ```javascript
-...
 
 // Use the aurelia-froala-editor plugin.
 aurelia.use.plugin('aurelia-froala-editor');
 ```
 
-- In your `src/app.html` include CSS files and Froala Editor component:
+- In your `src/app.html` include CSS files and Froala Editor component inside `<template>` tag :
 
 ```html
 <require from="froala-editor/css/froala_editor.pkgd.min.css"></require>
@@ -72,19 +74,7 @@ aurelia.use.plugin('aurelia-froala-editor');
 <froala-editor></froala-editor>
 ```
 
-- In `aurelia_project/aurelia.json` file set the builder loader plugins stub to `false`
-
-```javascript
-// Editor files.
-import "froala-editor/js/froala_editor.pkgd.min";
-
-...
-
-// Use the aurelia-froala-editor plugin.
-aurelia.use.plugin('aurelia-froala-editor');
-```
-
-- ​
+- If you are using bundler then in `aurelia_project/aurelia.json` file set the builder loader plugins stub to `false`
 
 ```json
 "loader": {
@@ -121,39 +111,6 @@ aurelia.use.plugin('aurelia-froala-editor');
 }
 ```
 
-- Open newly created `aurelia_project/tasks/copy-assets.js` file and make it look like this:
-
-```javascript
-import gulp from 'gulp';
-import project from '../aurelia.json';
-
-export default function copyAssets(done) {
-  let assets = project.paths.assets;
-
-  assets.forEach(item => {
-    gulp.src(item.src)
-        .pipe(gulp.dest(item.dest));
-    });
-
-  done();
-}
-```
-
-- Open `aurelia-project/tasks/build.js` file and modify it to look like this:
-
-```javascript
-import copyAssets from './copy-assets';
-
-let build = gulp.series(
-  readProjectConfiguration,
-  gulp.parallel(
-    ...
-    copyAssets // Add this.
-  ),
-  writeBundles
-);
-```
-
 #### Run aurelia-cli
 
 ```bash
@@ -164,7 +121,8 @@ au run --watch
 
 ### With Webpack
 
-To configure your project with Webpack, follow the resources from Aurelia Docs: http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/setup-webpack/2 .
+To configure your project with Webpack, follow the resources from Aurelia Docs: 
+https://aurelia.io/docs/build-systems/webpack/.
 
 ```bash
 git clone git@github.com:aurelia/skeleton-navigation.git
@@ -187,6 +145,11 @@ import { PLATFORM } from "aurelia-pal";
 
 // Editor files.
 import "froala-editor/js/froala_editor.pkgd.min";
+//Import third-party plugins
+// import "./../node_modules/froala-editor/js/third_party/image_tui.min";
+// import "./../node_modules/froala-editor/js/third_party/embedly.min";
+// import "./../node_modules/froala-editor/js/third_party/font_awesome.min";
+// import "./../node_modules/froala-editor/js/third_party/spell_checker.min";
 
 ...
 
@@ -194,7 +157,7 @@ import "froala-editor/js/froala_editor.pkgd.min";
 aurelia.use.plugin(PLATFORM.moduleName('aurelia-froala-editor'));
 ```
 
-- In your `src/app.html` include CSS files and Froala Editor component:
+- In your `src/app.html` include CSS files and Froala Editor component  inside `<template>` tag :
 
 ```html
 <require from="froala-editor/css/froala_editor.pkgd.min.css"></require>
@@ -209,7 +172,7 @@ aurelia.use.plugin(PLATFORM.moduleName('aurelia-froala-editor'));
 const { AureliaPlugin, ModuleDependenciesPlugin } = require('aurelia-webpack-plugin');
   resolve: {
     extensions: ['.js'],
-    modules:[srcDir,'../node_modules/froala-editor/js','node_modules'],
+    modules: [srcDir, path.resolve("node_modules")],
      alias: {
        "FroalaEditor": 'froala_editor.pkgd.min.js'
      }
@@ -240,7 +203,8 @@ npm run start
 
 #### Installing aurelia-cli
 
-To configure your project with JSPM, follow the resources from Aurelia Docs: http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/setup-jspm/1 .
+To configure your project with JSPM, follow the resources from Aurelia Docs: 
+https://aurelia.io/docs/build-systems/jspm.
 
 
 
@@ -270,7 +234,7 @@ jspm install npm:froala-editor -o "{format: 'global'}"
 aurelia.use.plugin('aurelia-froala-editor');
 ```
 
-- In your `src/app.html` include CSS files and Froala Editor component:
+- In your `src/app.html` include CSS files and Froala Editor component  inside `<template>` tag :
 
 ```html
 <require from="froala-editor/css/froala_editor.pkgd.min.css"></require>
@@ -348,15 +312,20 @@ aurelia.use.plugin('aurelia-froala-editor', config => {
 ```
 
 #### Events
+One can bind events to editor as  given below.
 
-All the [event handlers](https://www.froala.com/wysiwyg-editor/docs/events) are also available:
+>All the [event handlers](https://www.froala.com/wysiwyg-editor/docs/events) are also available.
 
 ```html
 <froala-editor
-	value.two-way="value"
-  	event-handlers.bind = "{
-    	'paste.afterCleanup': processPaste
-  	}"></froala-editor>
+	config.bind="tempCOnfig"></froala-editor>
+```
+```js
+ events: {
+      'focus': function () {
+        console.log('Focus');
+      }
+   }
 ```
 
 ## License
