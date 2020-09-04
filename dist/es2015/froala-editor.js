@@ -1,4 +1,4 @@
-var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
 function _initDefineProp(target, property, descriptor, context) {
 	if (!descriptor) return;
@@ -45,10 +45,9 @@ function _initializerWarningHelper(descriptor, context) {
 
 import { inject, customElement, bindable } from 'aurelia-framework';
 import { ObserverLocator } from "aurelia-binding";
-
 import { Config } from './froala-editor-config';
 
-import FroalaEditor from 'froala-editor/js/froala_editor.pkgd.min.js';
+import FroalaEditor from 'froala-editor';
 
 export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = inject(Element, Config, ObserverLocator), _dec(_class = _dec2(_class = (_class2 = class FroalaEditor1 {
 
@@ -59,59 +58,63 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 
 		_initDefineProp(this, 'eventHandlers', _descriptor3, this);
 
+		_initDefineProp(this, 'editor', _descriptor4, this);
+
 		this.element = element;
-
 		this.config = config.options();
-
-		this.subscriptions = [observerLocator.getObserver(this, 'value').subscribe((newValue, oldValue) => {
-			if (this.instance && this.instance.html.get() != newValue) {
-				this.instance.html(newValue);
-			}
-		})];
+		this.observerLocator = observerLocator;
 	}
 
-	tearUp() {
-		if (this.config.iframe) {
-			this.instance = this.element.getElementsByTagName('textarea')[0];
-		} else {
-			this.instance = this.element.getElementsByTagName('div')[0];
-		}
-
-		if (this.instance['data-froala.editor']) {
-			return;
-		}
-
-		this.instance.innerHTML = this.value;
-
-		if (this.eventHandlers && this.eventHandlers.length != 0) {
-			for (let eventHandlerName in this.eventHandlers) {
-				let handler = this.eventHandlers[eventHandlerName];
-				this.instance.addEventListener(`${eventHandlerName}`, function () {
-					let p = arguments;
-					return handler.apply(this, p);
-				});
-			}
-		}
-		this.instance.addEventListener('contentChanged', (e, editor) => this.value = editor.html.get());
-		this.instance.addEventListener('blur', (e, editor) => this.value = editor.html.get());
-
-		this.instance = new FroalaEditor(this.element, Object.assign({}, this.config));
-	}
-
-	tearDown() {
-		if (this.instance && this.instance['data-froala.editor']) {
-			this.instance.destroy();
-		}
-
-		this.instance = null;
+	bind(bindingContext, overrideContext) {
+		this.parent = bindingContext;
 	}
 
 	attached() {
-		this.tearUp();
+		const editorSelector = this.config.iframe ? 'textarea' : 'div';
+		let editor = this;
+
+		if (this.editor != null) {
+			return;
+		}
+
+		this.subscriptions = [this.observerLocator.getObserver(this, 'value').subscribe((newValue, oldValue) => {
+			if (this.editor && this.editor.html.get() != newValue) {
+				this.editor.html.set(newValue);
+			}
+		})];
+
+		this.config.events = {
+			contentChanged: function contentChanged(e) {
+				return editor.value = this.html.get();
+			},
+			blur: function blur(e) {
+				return editor.value = this.html.get();
+			}
+		};
+
+		this.editor = new FroalaEditor(this.element, Object.assign({}, this.config), () => {
+			this.editor.html.set(this.value);
+
+			if (this.eventHandlers && this.eventHandlers.length != 0) {
+				for (let eventHandlerName in this.eventHandlers) {
+					let handler = this.eventHandlers[eventHandlerName];
+					if (eventHandlerName === 'initialized') {
+						handler.apply(this.parent);
+					} else {
+						this.editor.events.on(`${eventHandlerName}`, (...args) => {
+							return handler.apply(this.parent, args);
+						});
+					}
+				}
+			}
+		});
 	}
 
 	detached() {
-		this.tearDown();
+		if (this.editor != null) {
+			this.editor.destroy();
+			this.editor = null;
+		}
 	}
 }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'value', [bindable], {
 	enumerable: true,
@@ -126,4 +129,7 @@ export let FroalaEditor1 = (_dec = customElement('froala-editor'), _dec2 = injec
 	initializer: function () {
 		return {};
 	}
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'editor', [bindable], {
+	enumerable: true,
+	initializer: null
 })), _class2)) || _class) || _class);
