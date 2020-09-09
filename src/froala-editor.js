@@ -1,92 +1,88 @@
 import {inject, customElement, bindable} from 'aurelia-framework';
 import {ObserverLocator} from "aurelia-binding";
-
 import {Config} from './froala-editor-config';
 
 // Import Froala Editor
-import FroalaEditor from 'froala-editor/js/froala_editor.pkgd.min.js'
+import FroalaEditor from 'froala-editor'
 
 @customElement('froala-editor')
 @inject(Element, Config, ObserverLocator)
 export class FroalaEditor1 {
 	@bindable value;
-	@bindable config = {}
-	@bindable eventHandlers = {}
+	@bindable config = {};
+	@bindable eventHandlers = {};
+	@bindable editor;
 
+	parent;
 	element;
-	instance;
 
 	constructor (element, config, observerLocator) {
-    // Store element.
 		this.element = element;
+		this.config = config.options();
+		this.observerLocator = observerLocator;
+	}
 
-    // Read config.
-    this.config = config.options();
+	// Get parent context to use in eventhandlers
+	bind(bindingContext, overrideContext) {
+		this.parent = bindingContext;
+	}
 
-    // Observe value.
+	// Setup
+	attached() {
+		// Get element.
+		const editorSelector = this.config.iframe ? 'textarea' : 'div';
+		let editor = this
+		
+		// Check if editor isn't already initialized.
+		if (this.editor != null) { return; }
+
+		// Observe value.
 		this.subscriptions = [
-			observerLocator
+			this.observerLocator
 					.getObserver(this, 'value')
 					.subscribe((newValue, oldValue) => {
-						if (this.instance && this.instance.html.get() != newValue) {
-							this.instance.html(newValue);
+						if (this.editor && this.editor.html.get() != newValue) {
+							this.editor.html.set(newValue);
 						}
 					})
-				];
-	}
-
-  // Starting poing.
-	  tearUp () {
-    // Get element.
-        if (this.config.iframe) {
-            this.instance = this.element.getElementsByTagName('textarea')[0];
-        }
-        else {
-            this.instance = this.element.getElementsByTagName('div')[0];
-        }
-
-    // Check if editor isn't already initialized.
-		if (this.instance['data-froala.editor']) {
-		  return;
-		}
-
-    // Set the HTML for the inner element.
-    this.instance.innerHTML = this.value;
-
-    // Set events.
-		if (this.eventHandlers && this.eventHandlers.length != 0) {
-			for(let eventHandlerName in this.eventHandlers) {
-				let handler = this.eventHandlers[eventHandlerName];
-				this.instance.addEventListener(`${eventHandlerName}`, function() {
-					let p = arguments;
-					return handler.apply(this, p)
-				});
-
+			];
+		
+		// Will be registered when editor is initialized.
+		this.config.events = {
+			contentChanged: function contentChanged(e) {
+			        return editor.value = this.html.get();
+			},
+			blur: function blur(e) {
+			        return editor.value = this.html.get();
 			}
-		}
-		this.instance.addEventListener('contentChanged', (e, editor) => this.value = editor.html.get());
-		this.instance.addEventListener('blur', (e, editor) => this.value = editor.html.get())
+		};
 
-    // Initialize editor.
-		this.instance = new FroalaEditor(this.element, Object.assign({}, this.config));
+		// Initialize editor.
+		this.editor = new FroalaEditor(this.element, Object.assign({}, this.config), () => {
+			// Set initial HTML value.
+			this.editor.html.set(this.value);
+
+			// Set Events
+			if (this.eventHandlers && this.eventHandlers.length != 0) {
+				for(let eventHandlerName in this.eventHandlers) {
+					let handler = this.eventHandlers[eventHandlerName];
+					if (eventHandlerName === 'initialized') {
+						handler.apply(this.parent);
+					} else {
+						this.editor.events.on(`${eventHandlerName}`, (...args) => {
+							return handler.apply(this.parent, args);
+						});
+					}
+				}
+			}
+		});
 	}
 
-  // Destroy.
-	tearDown () {
-		if (this.instance && this.instance['data-froala.editor']) {
-    	this.instance.destroy();
-  	}
-
-		this.instance = null;
-	}
-
-  // Setup.
-	attached () {
-		this.tearUp();
-	}
-
-  // Destroy.
+	// Destroy
 	detached () {
-		this.tearDown();
+		if (this.editor != null) {
+			this.editor.destroy();
+			this.editor = null;
+		}
 	}
 }
