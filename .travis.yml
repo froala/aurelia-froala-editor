@@ -1,0 +1,35 @@
+git: 
+  depth: false
+  quiet: false
+language: generic
+dist: bionic 
+sudo: required
+branches:
+  only:
+    - /dev*/
+    - /AO-dev*/
+    - /QA*/
+    - /QE*/
+    - /RC*/
+    - /Release-Master*/
+env:
+- SHORT_COMMIT= `git rev-parse --short=7 ${TRAVIS_COMMIT}`
+before_install:
+  - echo $TRAVIS_BRANCH
+  - echo $PWD
+  - echo $TRAVIS_COMMIT
+  - echo $BUILD_REPO_NAME
+  - curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+  - sudo apt-get update
+  - sudo apt-get install -y nodejs jq unzip curl wget tidy
+jobs:
+  include:
+    if: commit_message =~ /(deploy-yes)/
+    script: 
+      - chmod u+x publish.sh && bash publish.sh
+notifications:
+  email:
+    recipients:
+      - harasunu.narayan@froala.com
+    on_success: always
+    on_failure: always
