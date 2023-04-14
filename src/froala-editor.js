@@ -4,6 +4,7 @@ import {Config} from './froala-editor-config';
 
 // Import Froala Editor
 import FroalaEditor from 'froala-editor'
+import "froala-editor/js/plugins.pkgd.min'
 
 @customElement('froala-editor')
 @inject(Element, Config, ObserverLocator)
