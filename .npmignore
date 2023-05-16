@@ -1,3 +1,6 @@
 jspm_packages
 bower_components
 .idea
+.travis.yml
+publish.sh
+version.json
