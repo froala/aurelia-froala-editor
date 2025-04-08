@@ -18,7 +18,7 @@
 5. [License](#license)
 
 #### Note
->To use third-party plugins (i.e font-awesome,spell-checker,embedly and advanced image-edit) please use Aurelia with Webpack.
+>To use third-party plugins (i.e font-awesome,spell-checker,embedly and advanced image-edit) please use Aurelia with Webpack
 
 ## Installation instructions
 
