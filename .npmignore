@@ -4,3 +4,4 @@ bower_components
 .travis.yml
 publish.sh
 version.json
+.github
